@@ -1,0 +1,726 @@
+/* =====================================
+   ROOT VARIABLES
+===================================== */
+
+:root{
+    --f1-red:#e10600;
+    --f1-dark:#0a0a0a;
+    --f1-dark-2:#141414;
+    --f1-dark-3:#1d1d1d;
+    --f1-grey:#b9b9b9;
+    --f1-white:#ffffff;
+    --border:#2b2b2b;
+
+    --shadow-red:
+    0 10px 30px rgba(225,6,0,.25);
+
+    --shadow-dark:
+    0 8px 25px rgba(0,0,0,.4);
+
+    --transition:.3s ease;
+}
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    background:
+    linear-gradient(
+        180deg,
+        #080808,
+        #101010,
+        #161616
+    );
+
+    color:white;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+}
+
+/* =====================================
+   SCROLLBAR
+===================================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--f1-red);
+    border-radius:20px;
+}
+
+/* =====================================
+   HEADER
+===================================== */
+
+header{
+
+    min-height:70vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    padding:3rem;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.75),
+        rgba(0,0,0,.85)
+    ),
+    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70");
+
+    background-size:cover;
+    background-position:center;
+
+    border-bottom:
+    5px solid var(--f1-red);
+}
+
+.header-overlay{
+
+    max-width:900px;
+}
+
+header h1{
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:4rem;
+
+    color:var(--f1-red);
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    margin-bottom:1rem;
+
+    text-shadow:
+    0 0 20px rgba(225,6,0,.5);
+}
+
+header p{
+
+    font-size:1.2rem;
+
+    color:var(--f1-grey);
+
+    margin-bottom:1rem;
+}
+
+.f1-slogan{
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    color:white;
+
+    font-weight:600;
+
+    font-size:1rem;
+}
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+nav{
+
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    padding:1rem;
+
+    background:
+    rgba(10,10,10,.95);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:
+    1px solid var(--border);
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+    position:relative;
+}
+
+nav a:hover{
+
+    color:var(--f1-red);
+}
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-5px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--f1-red);
+
+    transition:.3s;
+}
+
+nav a:hover::after{
+
+    width:100%;
+}
+
+/* =====================================
+   SECTIONS
+===================================== */
+
+.section{
+
+    width:90%;
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:4rem 0;
+}
+
+.section h2{
+
+    font-size:2.2rem;
+
+    margin-bottom:2rem;
+
+    border-left:
+    5px solid var(--f1-red);
+
+    padding-left:15px;
+}
+
+/* =====================================
+   HERO CARD
+===================================== */
+
+.hero-card{
+
+    background:
+    rgba(25,25,25,.9);
+
+    border:
+    1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:3rem;
+
+    box-shadow:
+    var(--shadow-red);
+
+    backdrop-filter:blur(10px);
+}
+
+.hero-card p{
+
+    color:var(--f1-grey);
+
+    line-height:1.8;
+
+    margin:1rem 0 2rem;
+}
+
+.hero-actions{
+
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* =====================================
+   SEARCH
+===================================== */
+
+#searchInput{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:
+    var(--f1-dark-3);
+
+    color:white;
+
+    border:
+    1px solid var(--border);
+
+    outline:none;
+
+    font-size:1rem;
+}
+
+#searchInput:focus{
+
+    border-color:
+    var(--f1-red);
+
+    box-shadow:
+    0 0 15px rgba(225,6,0,.3);
+}
+
+/* =====================================
+   GRID
+===================================== */
+
+.grid-container{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+}
+
+/* =====================================
+   CARDS
+===================================== */
+
+.card {
+    background: linear-gradient(135deg, #111, #1a1a1a);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 15px;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(225,6,0,0.3);
+    border-color: #e10600;
+}
+
+
+.card h3{
+
+    color:var(--f1-red);
+
+    margin:1rem;
+}
+
+.card p{
+
+    margin:.6rem 1rem;
+
+    color:var(--f1-grey);
+
+    line-height:1.6;
+}
+
+/* =====================================
+   FEATURED DRIVER
+===================================== */
+
+#featuredDriverCard .card{
+
+    border:
+    2px solid var(--f1-red);
+
+    box-shadow:
+    0 0 30px rgba(225,6,0,.4);
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+button{
+
+    border:none;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--f1-red),
+        #b00000
+    );
+
+    color:white;
+
+    padding:14px 22px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    margin:1rem;
+
+    transition:var(--transition);
+}
+
+button:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 10px 25px rgba(225,6,0,.4);
+}
+
+/* =====================================
+   FAVOURITE DRIVER
+===================================== */
+
+#favouriteDriver{
+
+    background:
+    linear-gradient(
+        135deg,
+        #1b1b1b,
+        #111
+    );
+
+    padding:2rem;
+
+    border-radius:20px;
+
+    border-left:
+    5px solid var(--f1-red);
+
+    font-size:1.2rem;
+
+    box-shadow:
+    var(--shadow-dark);
+}
+
+/* =====================================
+   MAP
+===================================== */
+
+#map{
+
+    width:100%;
+
+    height:600px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    border:
+    2px solid var(--f1-red);
+
+    box-shadow:
+    var(--shadow-red);
+}
+
+/* =====================================
+   ABOUT
+===================================== */
+
+.about-card{
+
+    background:
+    rgba(25,25,25,.9);
+
+    padding:2rem;
+
+    border-radius:25px;
+
+    border:
+    1px solid var(--border);
+
+    line-height:1.9;
+}
+
+.about-card p{
+
+    color:var(--f1-grey);
+
+    margin-bottom:1rem;
+}
+
+/* =====================================
+   COUNTDOWN
+===================================== */
+
+#countdown{
+    display: flex;
+    align-items: center;
+    justify-content: center; /* or space-between */
+    gap: 20px;
+
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--f1-red);
+
+    flex-wrap: wrap; /* Remove this if you never want wrapping */
+}
+#countdown span{
+    display: inline-flex;
+    align-items: center;
+}
+
+.countdown-timer{
+    background: var(--f1-red);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer{
+
+    background:#0a0a0a;
+
+    text-align:center;
+
+    padding:2rem;
+
+    border-top:
+    1px solid var(--border);
+
+    color:var(--f1-grey);
+}
+
+/* =====================================
+   ANIMATIONS
+===================================== */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card{
+
+    animation:
+    fadeUp .6s ease;
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:900px){
+
+    header h1{
+        font-size:3rem;
+    }
+
+    .section h2{
+        font-size:1.8rem;
+    }
+
+    #map{
+        height:450px;
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+
+        min-height:60vh;
+        padding:2rem;
+    }
+
+    header h1{
+
+        font-size:2.2rem;
+    }
+
+    nav{
+
+        gap:12px;
+        padding:.8rem;
+    }
+
+    nav a{
+
+        font-size:.9rem;
+    }
+
+    .hero-card{
+
+        padding:2rem;
+    }
+
+    .section{
+
+        width:95%;
+    }
+
+    #map{
+
+        height:350px;
+    }
+
+    .card img{
+
+        height:250px;
+    }
+}
+.f1-car-track {
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+    height: 60px;
+    position: relative;
+}
+
+
+.driver-icon {
+    font-size: 50px;
+    text-align: center;
+    margin: 10px 0;
+}
+.compare-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.compare-box input {
+    padding: 12px;
+    width: 250px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #111;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.compare-box input:focus {
+    outline: none;
+    border-color: #e10600;
+    box-shadow: 0 0 10px rgba(225, 6, 0, 0.4);
+}
+
+.vs {
+    font-size: 22px;
+    font-weight: 900;
+    color: #e10600;
+}
+
+#compareResult .card {
+    margin-top: 15px;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    border: 2px solid rgba(225, 6, 0, 0.4);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+#compareResult .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.4);
+}
+
+#compareResult h3 {
+    color: #e10600;
+    margin-bottom: 10px;
+}
+
+.winner {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: gold;
+}
+#removeFavouriteBtn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #e10600;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#removeFavouriteBtn:hover {
+    background: darkred;
+    transform: scale(1.05);
+}
+.fav-card {
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;   /* 👈 THIS creates the line break effect */
+    transition: 0.3s ease;
+}
+
+.fav-card:hover {
+    transform: translateY(-3px);
+    border-color: #e10600;
+}
+
+

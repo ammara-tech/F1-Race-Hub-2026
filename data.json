@@ -1,0 +1,118 @@
+{
+  "drivers": [
+    { "id": 1, "name": "Max Verstappen", "team": "Red Bull Racing", "nationality": "Netherlands", "wins": 65, "worldChampionships": 4, "championshipYears": [2021, 2022, 2023, 2024], "description": "Dominant modern champion." },
+    { "id": 2, "name": "Liam Lawson", "team": "Red Bull Racing", "nationality": "New Zealand", "wins": 2, "worldChampionships": 0, "championshipYears": [], "description": "Aggressive rising talent." },
+
+    { "id": 3, "name": "Lewis Hamilton", "team": "Ferrari", "nationality": "UK", "wins": 105, "worldChampionships": 7, "championshipYears": [2008,2014,2015,2017,2018,2019,2020], "description": "Legendary champion at Ferrari." },
+    { "id": 4, "name": "Charles Leclerc", "team": "Ferrari", "nationality": "Monaco", "wins": 7, "worldChampionships": 0, "championshipYears": [], "description": "Qualifying master." },
+
+    { "id": 5, "name": "Lando Norris", "team": "McLaren", "nationality": "UK", "wins": 8, "worldChampionships": 0, "championshipYears": [], "description": "McLaren leader."},
+    { "id": 6, "name": "Oscar Piastri", "team": "McLaren", "nationality": "Australia", "wins": 5, "worldChampionships": 0, "championshipYears": [], "description": "Future champion." },
+
+    { "id": 7, "name": "George Russell", "team": "Mercedes", "nationality": "UK", "wins": 4, "worldChampionships": 0, "championshipYears": [], "description": "Consistent performer." },
+    { "id": 8, "name": "Kimi Antonelli", "team": "Mercedes", "nationality": "Italy", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Rookie prodigy."},
+
+    { "id": 9, "name": "Fernando Alonso", "team": "Aston Martin", "nationality": "Spain", "wins": 32, "worldChampionships": 2, "championshipYears": [2005,2006], "description": "Veteran fighter." },
+    { "id": 10, "name": "Lance Stroll", "team": "Aston Martin", "nationality": "Canada", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Midfield racer." },
+
+    { "id": 11, "name": "Pierre Gasly", "team": "Alpine", "nationality": "France", "wins": 1, "worldChampionships": 0, "championshipYears": [], "description": "Fast and aggressive." },
+    { "id": 12, "name": "Jack Doohan", "team": "Alpine", "nationality": "Australia", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Rookie driver." },
+
+    { "id": 13, "name": "Alexander Albon", "team": "Williams", "nationality": "Thailand", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Strong recovery driver." },
+    { "id": 14, "name": "Logan Sargeant", "team": "Williams", "nationality": "USA", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Developing talent." },
+
+    { "id": 15, "name": "Nico Hulkenberg", "team": "Haas", "nationality": "Germany", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Reliable veteran."},
+    { "id": 16, "name": "Oliver Bearman", "team": "Haas", "nationality": "UK", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Young talent."},
+
+    { "id": 17, "name": "Yuki Tsunoda", "team": "RB", "nationality": "Japan", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Aggressive racer." },
+    { "id": 18, "name": "Isack Hadjar", "team": "RB", "nationality": "France", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Rising star."},
+
+    { "id": 19, "name": "Valtteri Bottas", "team": "Kick Sauber", "nationality": "Finland", "wins": 10, "worldChampionships": 0, "championshipYears": [], "description": "Experienced finisher." },
+    { "id": 20, "name": "Gabriel Bortoleto", "team": "Kick Sauber", "nationality": "Brazil", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "F2 champion." },
+
+    { "id": 21, "name": "Sergio Perez", "team": "Cadillac F1", "nationality": "Mexico", "wins": 6, "worldChampionships": 0, "championshipYears": [], "description": "Experienced leader."},
+    { "id": 22, "name": "Colton Herta", "team": "Cadillac F1", "nationality": "USA", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "IndyCar star."},
+
+    { "id": 23, "name": "Esteban Ocon", "team": "Alpine", "nationality": "France", "wins": 1, "worldChampionships": 0, "championshipYears": [], "description": "Hard racer."},
+    { "id": 24, "name": "Kevin Magnussen", "team": "Haas", "nationality": "Denmark", "wins": 0, "worldChampionships": 0, "championshipYears": [], "description": "Aggressive veteran." }
+  ],
+
+  "teams": [
+    { "name": "Red Bull Racing", "drivers": ["Max Verstappen", "Liam Lawson"], "description": "Dominant force in F1." },
+    { "name": "Ferrari", "drivers": ["Lewis Hamilton", "Charles Leclerc"], "description": "Iconic Italian team." },
+    { "name": "McLaren", "drivers": ["Lando Norris", "Oscar Piastri"], "description": "Championship contenders." },
+    { "name": "Mercedes", "drivers": ["George Russell", "Kimi Antonelli"], "description": "German powerhouse." },
+    { "name": "Aston Martin", "drivers": ["Fernando Alonso", "Lance Stroll"], "description": "Strong midfield team." },
+    { "name": "Alpine", "drivers": ["Pierre Gasly", "Jack Doohan"], "description": "French works team." },
+    { "name": "Williams", "drivers": ["Alexander Albon", "Logan Sargeant"], "description": "Historic team rebuilding." },
+    { "name": "Haas", "drivers": ["Nico Hulkenberg", "Kevin Magnussen"], "description": "American team." },
+    { "name": "RB", "drivers": ["Yuki Tsunoda", "Isack Hadjar"], "description": "Junior Red Bull team." },
+    { "name": "Kick Sauber", "drivers": ["Valtteri Bottas", "Gabriel Bortoleto"], "description": "Audi transition team." },
+    { "name": "Cadillac F1", "drivers": ["Sergio Perez", "Colton Herta"], "description": "New US entry." },
+    { "name": "Audi F1 Works", "drivers": ["Driver A", "Driver B"], "description": "Future factory team." }
+  ],
+
+  "races": [
+    { "name": "Bahrain Grand Prix", "country": "Bahrain", "circuit": "Bahrain International Circuit", "date": "2026-03-08", "duration": "57 Laps" },
+    { "name": "Saudi Arabian Grand Prix", "country": "Saudi Arabia", "circuit": "Jeddah Corniche Circuit", "date": "2026-03-22", "duration": "50 Laps" },
+    { "name": "Australian Grand Prix", "country": "Australia", "circuit": "Albert Park Circuit", "date": "2026-04-05", "duration": "58 Laps" },
+    { "name": "Japanese Grand Prix", "country": "Japan", "circuit": "Suzuka Circuit", "date": "2026-04-19", "duration": "53 Laps" },
+
+    { "name": "Chinese Grand Prix", "country": "China", "circuit": "Shanghai International Circuit", "date": "2026-05-03", "duration": "56 Laps" },
+    { "name": "Miami Grand Prix", "country": "USA", "circuit": "Miami International Autodrome", "date": "2026-05-17", "duration": "57 Laps" },
+    { "name": "Emilia Romagna Grand Prix", "country": "Italy", "circuit": "Imola Circuit", "date": "2026-05-31", "duration": "63 Laps" },
+    { "name": "Monaco Grand Prix", "country": "Monaco", "circuit": "Circuit de Monaco", "date": "2026-06-07", "duration": "78 Laps" },
+
+    { "name": "Spanish Grand Prix", "country": "Spain", "circuit": "Circuit de Barcelona-Catalunya", "date": "2026-06-21", "duration": "66 Laps" },
+    { "name": "Canadian Grand Prix", "country": "Canada", "circuit": "Circuit Gilles Villeneuve", "date": "2026-06-28", "duration": "70 Laps" },
+    { "name": "Austrian Grand Prix", "country": "Austria", "circuit": "Red Bull Ring", "date": "2026-07-05", "duration": "71 Laps" },
+    { "name": "British Grand Prix", "country": "UK", "circuit": "Silverstone Circuit", "date": "2026-07-19", "duration": "52 Laps" },
+
+    { "name": "Hungarian Grand Prix", "country": "Hungary", "circuit": "Hungaroring", "date": "2026-07-26", "duration": "70 Laps" },
+    { "name": "Belgian Grand Prix", "country": "Belgium", "circuit": "Spa-Francorchamps", "date": "2026-08-02", "duration": "44 Laps" },
+    { "name": "Dutch Grand Prix", "country": "Netherlands", "circuit": "Zandvoort Circuit", "date": "2026-08-30", "duration": "72 Laps" },
+    { "name": "Italian Grand Prix", "country": "Italy", "circuit": "Monza Circuit", "date": "2026-09-06", "duration": "53 Laps" },
+
+    { "name": "Azerbaijan Grand Prix", "country": "Azerbaijan", "circuit": "Baku City Circuit", "date": "2026-09-20", "duration": "51 Laps" },
+    { "name": "Singapore Grand Prix", "country": "Singapore", "circuit": "Marina Bay Street Circuit", "date": "2026-10-04", "duration": "62 Laps" },
+    { "name": "United States Grand Prix", "country": "USA", "circuit": "Circuit of the Americas", "date": "2026-10-18", "duration": "56 Laps" },
+    { "name": "Mexico City Grand Prix", "country": "Mexico", "circuit": "Autódromo Hermanos Rodríguez", "date": "2026-10-25", "duration": "71 Laps" },
+
+    { "name": "Brazilian Grand Prix", "country": "Brazil", "circuit": "Interlagos Circuit", "date": "2026-11-08", "duration": "71 Laps" },
+    { "name": "Las Vegas Grand Prix", "country": "USA", "circuit": "Las Vegas Street Circuit", "date": "2026-11-22", "duration": "50 Laps" },
+    { "name": "Qatar Grand Prix", "country": "Qatar", "circuit": "Lusail International Circuit", "date": "2026-11-29", "duration": "57 Laps" },
+    { "name": "Abu Dhabi Grand Prix", "country": "UAE", "circuit": "Yas Marina Circuit", "date": "2026-12-06", "duration": "58 Laps" }
+  ],
+
+  "circuits": [
+    { "name": "Bahrain International Circuit", "lat": 26.0325, "lng": 50.5106, "country": "Bahrain" },
+    { "name": "Jeddah Corniche Circuit", "lat": 21.6319, "lng": 39.1044, "country": "Saudi Arabia" },
+    { "name": "Albert Park Circuit", "lat": -37.8497, "lng": 144.968, "country": "Australia" },
+    { "name": "Suzuka Circuit", "lat": 34.8431, "lng": 136.541, "country": "Japan" },
+
+    { "name": "Shanghai International Circuit", "lat": 31.3389, "lng": 121.2200, "country": "China" },
+    { "name": "Miami International Autodrome", "lat": 25.9580, "lng": -80.2389, "country": "USA" },
+    { "name": "Imola Circuit", "lat": 44.3439, "lng": 11.7167, "country": "Italy" },
+    { "name": "Circuit de Monaco", "lat": 43.7347, "lng": 7.4206, "country": "Monaco" },
+
+    { "name": "Circuit de Barcelona-Catalunya", "lat": 41.5700, "lng": 2.2611, "country": "Spain" },
+    { "name": "Circuit Gilles Villeneuve", "lat": 45.5032, "lng": -73.5269, "country": "Canada" },
+    { "name": "Red Bull Ring", "lat": 47.2197, "lng": 14.7647, "country": "Austria" },
+    { "name": "Silverstone Circuit", "lat": 52.0786, "lng": -1.0169, "country": "UK" },
+
+    { "name": "Hungaroring", "lat": 47.4980, "lng": 19.0400, "country": "Hungary" },
+    { "name": "Spa-Francorchamps", "lat": 50.4372, "lng": 5.9714, "country": "Belgium" },
+    { "name": "Zandvoort Circuit", "lat": 52.3888, "lng": 4.5409, "country": "Netherlands" },
+    { "name": "Monza Circuit", "lat": 45.6156, "lng": 9.2811, "country": "Italy" },
+
+    { "name": "Baku City Circuit", "lat": 40.3725, "lng": 49.8533, "country": "Azerbaijan" },
+    { "name": "Marina Bay Street Circuit", "lat": 1.2914, "lng": 103.8640, "country": "Singapore" },
+    { "name": "Circuit of the Americas", "lat": 30.1346, "lng": -97.6359, "country": "USA" },
+    { "name": "Autódromo Hermanos Rodríguez", "lat": 19.4042, "lng": -99.0907, "country": "Mexico" },
+
+    { "name": "Interlagos Circuit", "lat": -23.7036, "lng": -46.6997, "country": "Brazil" },
+    { "name": "Las Vegas Street Circuit", "lat": 36.1147, "lng": -115.1728, "country": "USA" },
+    { "name": "Lusail International Circuit", "lat": 25.4900, "lng": 51.4542, "country": "Qatar" },
+    { "name": "Yas Marina Circuit", "lat": 24.4672, "lng": 54.6031, "country": "UAE" }
+  ]
+}
