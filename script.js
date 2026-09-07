@@ -1,5 +1,5 @@
 // =====================================
-// DOM ELEMENTS (MATCH YOUR HTML EXACTLY)
+// DOM ELEMENTS
 // =====================================
 
 const driversContainer = document.getElementById("driversContainer");
@@ -9,23 +9,21 @@ const favouriteDriver = document.getElementById("favouriteDriver");
 const searchInput = document.getElementById("searchInput");
 const featuredDriverCard = document.getElementById("featuredDriverCard");
 const countdown = document.getElementById("countdown");
+const standingsContainer = document.getElementById("standingsContainer");
 
 let drivers = [];
 let teams = [];
 let races = [];
 let circuits = [];
+let teamColors = {};
 
 // =====================================
-// FETCH DATA (FIXED + DEBUG MODE)
+// FETCH DATA
 // =====================================
 
 async function fetchData() {
   try {
-    console.log("📦 Attempting to load data.json...");
-
     const response = await fetch("./data.json");
-
-    console.log("HTTP Status:", response.status);
 
     if (!response.ok) {
       throw new Error(`data.json not found (HTTP ${response.status})`);
@@ -33,81 +31,82 @@ async function fetchData() {
 
     const data = await response.json();
 
-    console.log("✅ DATA LOADED SUCCESSFULLY");
-
     drivers = data.drivers || [];
     teams = data.teams || [];
     races = data.races || [];
     circuits = data.circuits || [];
 
+    teamColors = {};
+    teams.forEach(t => { teamColors[t.name] = t.color || "#E10600"; });
+
     renderDrivers(drivers);
     renderTeams(teams);
     renderRaces(races);
-
     renderFeaturedDriver();
-    loadFavourite();
+    renderFavourites();
+    renderStandings();
     startCountdown();
     showMap();
 
   } catch (err) {
-    console.error("❌ FETCH ERROR:", err);
+    console.error("FETCH ERROR:", err);
 
     document.body.insertAdjacentHTML(
       "afterbegin",
       `
       <div style="
-        background:#e10600;
+        background:#E10600;
         color:white;
         padding:15px;
         font-weight:bold;
         text-align:center;
-        font-family:Arial;
+        font-family:'Titillium Web',Arial,sans-serif;
       ">
-        ❌ Failed to load data.json — Check Live Server + file path
+        Failed to load data.json — check that it sits alongside index.html.
       </div>
       `
     );
   }
 }
-renderDrivers(drivers);
-renderTeams(teams);
-renderRaces(races);
 
-renderFeaturedDriver();
-loadFavourite();
-startCountdown();
-showMap();
-
-// 🔥 MUST BE LAST (after drivers exist)
-setTimeout(() => {
-  renderStandings();
-}, 100);
 // =====================================
 // RENDER DRIVERS
 // =====================================
 
 function renderDrivers(driverList) {
+  if (!driversContainer) return;
+
   driversContainer.innerHTML = "";
 
-  driverList.forEach(driver => {
-    driversContainer.innerHTML += `
-      <div class="card">
-        <div class="driver-icon">🏁</div>
+  if (!driverList.length) {
+    driversContainer.innerHTML = "<p>No drivers match your search.</p>";
+    return;
+  }
 
-        <h3>${driver.name}</h3>
-        <p><strong>Team:</strong> ${driver.team}</p>
+  driverList.forEach(driver => {
+    const color = teamColors[driver.team] || "#E10600";
+
+    driversContainer.innerHTML += `
+      <div class="card driver-card" style="border-left-color:${color}">
+        <div class="car-number">${driver.number ?? ""}</div>
+
+        <h3><span class="flag">${driver.flag ?? ""}</span>${driver.name}</h3>
+        <span class="team-tag" style="background:${color}">${driver.team}</span>
+
         <p><strong>Nationality:</strong> ${driver.nationality}</p>
-        <p>🏁 Wins: ${driver.wins}</p>
+        <p>🏁 Career Wins: ${driver.wins}</p>
         <p>🏆 Championships: ${driver.worldChampionships}</p>
-        <p>📅 Years: ${
+        <p>📅 Title Years: ${
           driver.championshipYears?.length
             ? driver.championshipYears.join(", ")
             : "None"
         }</p>
-        <p>${driver.description}</p>
+        ${driver.points2026 !== undefined ? `<p>📊 2026 Points: ${driver.points2026}</p>` : ""}
 
-        <button onclick="saveFavourite('${driver.name}')">
-          ⭐ Favourite Driver
+        <p class="desc">${driver.description}</p>
+
+        <button onclick="saveFavourite('${driver.name.replace(/'/g, "\\'")}')">
+          ⭐ Add to Favourites
         </button>
       </div>
     `;
@@ -125,9 +124,11 @@ function renderTeams(list) {
 
   list.forEach(team => {
     teamsContainer.innerHTML += `
-      <div class="card">
+      <div class="card team-card" style="border-left-color:${team.color || "#E10600"}">
+        <div class="team-swatch" style="background:${team.color || "#E10600"}"></div>
         <h3>${team.name}</h3>
         <p><strong>Drivers:</strong> ${team.drivers.join(", ")}</p>
+        ${team.engine ? `<p><strong>Power Unit:</strong> ${team.engine}</p>` : ""}
         <p>${team.description}</p>
       </div>
     `;
@@ -143,14 +144,20 @@ function renderRaces(list) {
 
   racesContainer.innerHTML = "";
 
+  const now = new Date();
+
   list.forEach(race => {
+    const isPast = new Date(race.date + "T00:00:00") < now;
+
     racesContainer.innerHTML += `
       <div class="card">
-        <h3>${race.name}</h3>
+        <h3>${race.round ? `#${race.round} ` : ""}${race.name}</h3>
         <p>🌍 ${race.country}</p>
         <p>🏁 ${race.circuit}</p>
         <p>📅 ${race.date}</p>
         <p>⏱ ${race.duration}</p>
+        ${race.sprint ? `<p>⚡ Sprint Weekend</p>` : ""}
+        <p><strong>${isPast ? "Completed" : "Upcoming"}</strong></p>
       </div>
     `;
   });
@@ -164,12 +171,14 @@ function renderFeaturedDriver() {
   if (!drivers.length || !featuredDriverCard) return;
 
   const driver = drivers[Math.floor(Math.random() * drivers.length)];
+  const color = teamColors[driver.team] || "#E10600";
 
   featuredDriverCard.innerHTML = `
-    <div class="card">
-      <h3>${driver.name}</h3>
-      <p>${driver.team}</p>
-      <p>${driver.description}</p>
+    <div class="card driver-card" style="border-left-color:${color}">
+      <div class="car-number">${driver.number ?? ""}</div>
+      <h3><span class="flag">${driver.flag ?? ""}</span>${driver.name}</h3>
+      <span class="team-tag" style="background:${color}">${driver.team}</span>
+      <p class="desc">${driver.description}</p>
     </div>
   `;
 }
@@ -189,7 +198,6 @@ function saveFavourite(driverName) {
   const driver = drivers.find(d => d.name === driverName);
   if (!driver) return;
 
-  // prevent duplicates
   if (!favourites.some(f => f.name === driverName)) {
     favourites.push({
       name: driver.name,
@@ -197,101 +205,43 @@ function saveFavourite(driverName) {
       wins: driver.wins,
       championships: driver.worldChampionships
     });
+    localStorage.setItem("favouriteDrivers", JSON.stringify(favourites));
   }
-
-  localStorage.setItem("favouriteDrivers", JSON.stringify(favourites));
 
   renderFavourites();
 }
 
-function loadFavourite() {
-  const saved = localStorage.getItem("favouriteDriver");
-
-  const btn = document.getElementById("removeFavouriteBtn");
-
-  if (saved) {
-    favouriteDriver.innerHTML = `⭐ ${saved}`;
-    if (btn) btn.style.display = "inline-block";
-  } else {
-    favouriteDriver.innerHTML = "No favourite driver selected.";
-    if (btn) btn.style.display = "none";
-  }
-}
 function removeSingleFavourite(name) {
   let favourites = JSON.parse(localStorage.getItem("favouriteDrivers")) || [];
-
   favourites = favourites.filter(d => d.name !== name);
-
   localStorage.setItem("favouriteDrivers", JSON.stringify(favourites));
+  renderFavourites();
+}
 
-  renderFavourites();
-}
-function loadFavourite() {
-  renderFavourites();
-}
 function renderFavourites() {
-  const container = document.getElementById("favouriteDriver");
+  if (!favouriteDriver) return;
+
   const favourites = JSON.parse(localStorage.getItem("favouriteDrivers")) || [];
 
-  const btn = document.getElementById("removeFavouriteBtn");
-
   if (!favourites.length) {
-    container.innerHTML = "No favourite drivers selected.";
-    if (btn) btn.style.display = "none";
+    favouriteDriver.innerHTML = "No favourite drivers selected yet.";
     return;
   }
 
-container.innerHTML = "<h3>⭐ My Favourite Drivers</h3><br>";
+  favouriteDriver.innerHTML = "<h3>⭐ My Favourite Drivers</h3>";
 
-  favourites.forEach((d, index) => {
-    container.innerHTML += `
-      <div class="fav-card">
-        <h4>${d.name}</h4>
-        <p>🏎 Team: ${d.team}</p>
-        <p>🏁 Wins: ${d.wins}</p>
-        <p>🏆 Titles: ${d.championships}</p>
-        <button onclick="removeSingleFavourite('${d.name}')">
-          ❌ Remove
-        </button>
+  favourites.forEach(d => {
+    const color = teamColors[d.team] || "#E10600";
+    favouriteDriver.innerHTML += `
+      <div class="fav-card" style="border-left:3px solid ${color}">
+        <div>
+          <h4>${d.name}</h4>
+          <p>🏎 ${d.team} · 🏁 ${d.wins} wins · 🏆 ${d.championships} titles</p>
+        </div>
+        <button onclick="removeSingleFavourite('${d.name.replace(/'/g, "\\'")}')">Remove</button>
       </div>
     `;
   });
-
-  if (btn) btn.style.display = "inline-block";
-}
-function updateFavouriteStats() {
-  const container = document.getElementById("favStats");
-  const favourites = JSON.parse(localStorage.getItem("favouriteDrivers")) || [];
-
-  if (!favourites.length) {
-    container.innerHTML = "<p>No stats available</p>";
-    return;
-  }
-
-  let totalWins = 0;
-  let totalTitles = 0;
-
-  favourites.forEach(d => {
-    totalWins += d.wins;
-    totalTitles += d.championships;
-  });
-
-  container.innerHTML = `
-    <div class="card">
-      <h3>⭐ Total Favourite Drivers</h3>
-      <p>${favourites.length}</p>
-    </div>
-
-    <div class="card">
-      <h3>🏁 Total Wins</h3>
-      <p>${totalWins}</p>
-    </div>
-
-    <div class="card">
-      <h3>🏆 Total Championships</h3>
-      <p>${totalTitles}</p>
-    </div>
-  `;
 }
 
 // =====================================
@@ -304,7 +254,8 @@ if (searchInput) {
 
     const filtered = drivers.filter(d =>
       d.name.toLowerCase().includes(value) ||
-      d.team.toLowerCase().includes(value)
+      d.team.toLowerCase().includes(value) ||
+      (d.nationality && d.nationality.toLowerCase().includes(value))
     );
 
     renderDrivers(filtered);
@@ -314,19 +265,18 @@ if (searchInput) {
 // =====================================
 // COUNTDOWN
 // =====================================
+
 function startCountdown() {
   if (!countdown || !races.length) return;
 
   function updateCountdown() {
     const now = new Date();
 
-    // Find the next upcoming race
     const nextRace = races.find(race => {
       const raceDate = new Date(race.date + "T00:00:00");
       return raceDate >= now;
     });
 
-    // If there are no races left
     if (!nextRace) {
       countdown.innerHTML = `
         <h3>🏁 2026 Season Complete!</h3>
@@ -344,25 +294,19 @@ function startCountdown() {
     const seconds = Math.floor((diff / 1000) % 60);
 
     countdown.innerHTML = `
-      <h3>${nextRace.name}: </h3>
-      <p>${nextRace.country}</p>
+      <h3>${nextRace.name}</h3>
+      <p>${nextRace.circuit} · ${nextRace.country}</p>
       <p><strong>${nextRace.date}</strong></p>
-
-      <div class="countdown-timer">
-        ${days}d ${hours}h ${minutes}m ${seconds}s
-      </div>
+      <div class="countdown-timer">${days}d ${hours}h ${minutes}m ${seconds}s</div>
     `;
   }
 
   updateCountdown();
-
-  // Update every second
   setInterval(updateCountdown, 1000);
 }
 
-
 // =====================================
-// MAP (SAFE)
+// MAP
 // =====================================
 
 function showMap() {
@@ -373,115 +317,94 @@ function showMap() {
 
   if (!circuits.length) return;
 
-  const map = L.map("map").setView([20, 0], 2);
+  const map = L.map("map").setView([20, 10], 2);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap"
+    attribution: "&copy; OpenStreetMap contributors"
   }).addTo(map);
 
   circuits.forEach(c => {
-  const marker = L.marker([c.lat, c.lng]).addTo(map);
+    const marker = L.marker([c.lat, c.lng]).addTo(map);
 
-  marker.bindPopup(`
-    <b>${c.name}</b><br>
-    ${c.country}<br>
-    🏁 F1 Circuit
-  `);
+    marker.bindPopup(`<b>${c.name}</b><br>${c.country}<br>🏁 F1 Circuit`);
 
-  marker.on("mouseover", () => {
-    marker.openPopup();
+    marker.on("mouseover", () => marker.openPopup());
   });
-});
 }
+
+// =====================================
+// STANDINGS (weighted score, clearly labelled as unofficial)
+// =====================================
 
 function renderStandings() {
-  const container = document.getElementById("standingsContainer");
-
-  console.log("Standings container:", container);
-  console.log("Drivers in standings:", drivers.length);
-
-  if (!container) {
-    console.error("❌ standingsContainer NOT FOUND in HTML");
-    return;
-  }
+  if (!standingsContainer) return;
 
   if (!drivers.length) {
-    container.innerHTML = "<p>No driver data loaded</p>";
+    standingsContainer.innerHTML = "<p>No driver data loaded.</p>";
     return;
   }
 
-  const standings = [...drivers].sort((a, b) => {
-    return (b.wins * 5 + b.worldChampionships * 50) -
-           (a.wins * 5 + a.worldChampionships * 50);
-  });
+  const scored = drivers.map(d => ({
+    ...d,
+    score: (d.points2026 ?? 0) + d.wins * 3 + d.worldChampionships * 20
+  }));
 
-  container.innerHTML = "<h2>🏆 Championship Standings</h2>";
+  scored.sort((a, b) => b.score - a.score);
 
-  standings.forEach((d, i) => {
-    const points = (d.wins * 5) + (d.worldChampionships * 50);
+  const maxScore = scored[0].score || 1;
 
-    container.innerHTML += `
-      <div class="card">
-        <h3>#${i + 1} ${d.name}</h3>
-        <p>${d.team}</p>
-        <p>⭐ ${points} pts</p>
-      </div>
-    `;
-  });
+  standingsContainer.innerHTML = `<div class="standings-list">${
+    scored.map((d, i) => {
+      const color = teamColors[d.team] || "#E10600";
+      const widthPct = Math.max(6, Math.round((d.score / maxScore) * 100));
+
+      return `
+        <div class="standing-row ${i === 0 ? "p1" : ""}">
+          <div class="standing-rank">${i + 1}</div>
+          <div class="standing-name">
+            ${d.flag ?? ""} ${d.name}
+            <small>${d.team}${d.points2026 !== undefined ? ` · ${d.points2026} pts (2026)` : ""}</small>
+          </div>
+          <div class="standing-pts" style="color:${color}">${d.score}</div>
+          <div class="standing-bar-track">
+            <div class="standing-bar-fill" style="width:${widthPct}%; background:${color}"></div>
+          </div>
+        </div>
+      `;
+    }).join("")
+  }</div>`;
 }
 
+// =====================================
+// COMPARE
+// =====================================
+
 function compareDrivers() {
-  const aName = document.getElementById("driverA").value.toLowerCase();
-  const bName = document.getElementById("driverB").value.toLowerCase();
+  const aName = document.getElementById("driverA").value.toLowerCase().trim();
+  const bName = document.getElementById("driverB").value.toLowerCase().trim();
   const result = document.getElementById("compareResult");
 
   const a = drivers.find(d => d.name.toLowerCase().includes(aName));
   const b = drivers.find(d => d.name.toLowerCase().includes(bName));
 
-  if (!a || !b) {
-    result.innerHTML = `
-      <div class="card">
-        ❌ Please enter two valid drivers
-      </div>
-    `;
+  if (!aName || !bName || !a || !b) {
+    result.innerHTML = `<div class="card">❌ Please enter two valid driver names.</div>`;
     return;
   }
 
-  const scoreA = (a.wins * 5) + (a.worldChampionships * 50);
-  const scoreB = (b.wins * 5) + (b.worldChampionships * 50);
+  const scoreA = (a.points2026 ?? 0) + a.wins * 3 + a.worldChampionships * 20;
+  const scoreB = (b.points2026 ?? 0) + b.wins * 3 + b.worldChampionships * 20;
 
   const winner = scoreA > scoreB ? a.name : b.name;
 
   result.innerHTML = `
     <div class="card">
-      <h3>🏁 ${a.name} VS ${b.name}</h3>
-
-      <p>${a.name}: ${scoreA} pts</p>
-      <p>${b.name}: ${scoreB} pts</p>
-
-      <div class="winner">
-        🏆 ${winner} leads the duel
-      </div>
+      <h3>🏁 ${a.name} vs ${b.name}</h3>
+      <p>${a.name}: ${a.wins} wins · ${a.worldChampionships} titles · ${a.points2026 ?? 0} pts (2026)</p>
+      <p>${b.name}: ${b.wins} wins · ${b.worldChampionships} titles · ${b.points2026 ?? 0} pts (2026)</p>
+      <div class="winner">🏆 ${winner} leads the duel</div>
     </div>
   `;
-}
-
-const facts = [
-  "F1 cars can brake from 300km/h to 0 in under 4 seconds.",
-  "Pit stops can be completed in under 2 seconds.",
-  "Engines reach over 15,000 RPM.",
-  "Drivers lose up to 3kg per race in fluid.",
-  "Downforce allows F1 cars to drive upside down."
-];
-
-function rotateFacts() {
-  const el = document.querySelector("#facts .card p");
-  if (!el) return;
-
-  setInterval(() => {
-    const random = facts[Math.floor(Math.random() * facts.length)];
-    el.textContent = random;
-  }, 4000);
 }
 
 // =====================================
@@ -489,4 +412,4 @@ function rotateFacts() {
 // =====================================
 
 fetchData();
-rotateFacts();
+
