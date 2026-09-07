@@ -1,0 +1,146 @@
+/* =====================================
+   JOIN THE GRID — standalone widget styles
+   Namespaced under .fan-* so it never collides
+   with the rest of style.css.
+===================================== */
+
+.fan-join-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    background:linear-gradient(155deg,#15151E,#1C1C26);
+    border:1px solid #2C2C38;
+    border-left:4px solid #E10600;
+    border-radius:6px;
+    padding:2rem;
+}
+
+.fan-join-form{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+}
+
+.fan-field{
+    display:flex;
+    flex-direction:column;
+    gap:.4rem;
+}
+
+.fan-field label{
+    font-size:.72rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:#9A9AA5;
+}
+
+.fan-field input,
+.fan-field select{
+    padding:12px 14px;
+    border-radius:4px;
+    border:1px solid #2C2C38;
+    background:#1C1C26;
+    color:#FFFFFF;
+    font-family:inherit;
+    font-size:.95rem;
+    outline:none;
+}
+
+.fan-field input:focus,
+.fan-field select:focus{
+    border-color:#E10600;
+    box-shadow:0 0 0 3px rgba(225,6,0,.18);
+}
+
+.fan-join-form button{
+    align-self:flex-start;
+    margin-top:.3rem;
+}
+
+.fan-join-message{
+    font-size:.85rem;
+    color:#7CD98A;
+    min-height:1.2em;
+}
+
+.fan-join-message--error{
+    color:#FF6B6B;
+}
+
+.fan-roster{
+    border-left:1px solid #2C2C38;
+    padding-left:2rem;
+}
+
+.fan-roster h3{
+    font-size:.95rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-weight:800;
+    margin-bottom:1rem;
+}
+
+.fan-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    max-height:280px;
+    overflow-y:auto;
+}
+
+.fan-empty{
+    color:#6C6C78;
+    font-size:.88rem;
+}
+
+.fan-chip{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#1C1C26;
+    border:1px solid #2C2C38;
+    border-radius:4px;
+    padding:.6rem .8rem;
+}
+
+.fan-chip-name{
+    font-weight:700;
+    font-size:.88rem;
+    flex:1;
+}
+
+.fan-chip-team{
+    font-size:.72rem;
+    color:#9A9AA5;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
+
+.fan-chip-remove{
+    background:transparent;
+    border:none;
+    color:#6C6C78;
+    padding:2px 6px;
+    font-size:.8rem;
+    cursor:pointer;
+}
+
+.fan-chip-remove:hover{
+    color:#E10600;
+    background:transparent;
+    transform:none;
+    box-shadow:none;
+}
+
+@media (max-width:760px){
+    .fan-join-card{
+        grid-template-columns:1fr;
+    }
+    .fan-roster{
+        border-left:none;
+        border-top:1px solid #2C2C38;
+        padding-left:0;
+        padding-top:1.5rem;
+    }
+}
