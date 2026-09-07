@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="join-fans.css">
 </head>
 <body>
 
@@ -264,11 +265,51 @@ FACTS
 JOIN FANS
 ========================== -->
 
-<section class="section section-tight">
-    <div class="about-card">
-        <h2 class="section-heading" style="font-size:1.5rem;">Join The Grid</h2>
-        <p>Stay connected with the latest Formula 1 news, race weekends and championship action.</p>
-        <button>Join F1 Fans</button>
+<section id="join-fans" class="section section-tight">
+    <div class="section-head">
+        <div class="eyebrow">Community</div>
+        <h2 class="section-heading">Join The Grid</h2>
+        <p class="section-sub">Sign up to save your fan profile on this device — see everyone else who's joined below.</p>
+    </div>
+
+    <div id="fanJoinWidget" class="fan-join-card">
+        <form id="fanJoinForm" class="fan-join-form" novalidate>
+            <div class="fan-field">
+                <label for="fanName">Name</label>
+                <input type="text" id="fanName" name="fanName" placeholder="Your name" autocomplete="name" required>
+            </div>
+
+            <div class="fan-field">
+                <label for="fanEmail">Email</label>
+                <input type="email" id="fanEmail" name="fanEmail" placeholder="you@example.com" autocomplete="email" required>
+            </div>
+
+            <div class="fan-field">
+                <label for="fanTeam">Favourite Team</label>
+                <select id="fanTeam" name="fanTeam" required>
+                    <option value="" disabled selected>Choose a team…</option>
+                    <option>Red Bull Racing</option>
+                    <option>Ferrari</option>
+                    <option>McLaren</option>
+                    <option>Mercedes</option>
+                    <option>Aston Martin</option>
+                    <option>Alpine</option>
+                    <option>Williams</option>
+                    <option>Haas</option>
+                    <option>Racing Bulls</option>
+                    <option>Audi</option>
+                    <option>Cadillac F1</option>
+                </select>
+            </div>
+
+            <button type="submit">Join F1 Fans</button>
+            <p id="fanJoinMessage" class="fan-join-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="fan-roster">
+            <h3>Fans On The Grid (<span id="fanCount">0</span>)</h3>
+            <div id="fanList" class="fan-list"></div>
+        </div>
     </div>
 </section>
 
@@ -306,6 +347,7 @@ FOOTER
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="script.js"></script>
+<script src="join-fans.js"></script>
 
 </body>
 </html>
