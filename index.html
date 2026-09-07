@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Race Hub 2026</title>
+    <title>F1 Race Hub — 2026 Season</title>
+    <meta name="description" content="Drivers, teams, race calendar, live-style standings and circuit map for the 2026 Formula 1 season.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
 
     <!-- Leaflet CSS -->
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -26,20 +23,24 @@ HEADER
 ========================== -->
 
 <header>
-
     <div class="header-overlay">
-        <h1>F1 Race Hub 2026</h1>
+        <div class="header-kicker"><span class="dot"></span> 2026 FIA Formula One World Championship</div>
 
-        <p>Your Ultimate Formula 1 Season Companion</p>
+        <h1><span>F1 Race Hub</span><span class="accent">2026 Season</span></h1>
+
+        <p>Every driver, team and circuit of Formula 1's new regulation era — live standings, the full calendar and an interactive world map, in one place.</p>
+
+        <div class="hero-actions">
+            <a href="#drivers"><button>Explore Drivers</button></a>
+            <a href="#races"><button class="ghost">View Calendar</button></a>
+        </div>
 
         <div class="f1-slogan">
             <span>All To Drive For</span>
             <span>|</span>
             <span>We Race As One</span>
         </div>
-
     </div>
-
 </header>
 
 <!-- ==========================
@@ -47,121 +48,100 @@ NAVIGATION
 ========================== -->
 
 <nav>
-
     <a href="#home">Home</a>
     <a href="#drivers">Drivers</a>
     <a href="#teams">Teams</a>
+    <a href="#standingsSection">Standings</a>
     <a href="#races">Races</a>
     <a href="#map-section">Circuits</a>
-    <a href="#facts">Facts</a>
     <a href="#about">About</a>
-
 </nav>
 
 <!-- ==========================
-HOME SECTION
+STATS STRIP
 ========================== -->
 
-<section id="home" class="section">
-
-    <div class="hero-card">
-
-        <h2>Welcome to F1 Race Hub</h2>
-
-        <p>
-            Explore Formula 1 drivers, teams, race schedules,
-            championship statistics and circuit locations around the world.
-        </p>
-
-        <div class="hero-actions">
-            <a href="#drivers">
-                <button>Explore Drivers</button>
-            </a>
-
-            <a href="#races">
-                <button>View Calendar</button>
-            </a>
+<section id="home" class="section section-tight">
+    <div class="stat-strip">
+        <div class="stat-block">
+            <h3>22</h3>
+            <p>Drivers</p>
         </div>
-
+        <div class="stat-block">
+            <h3>11</h3>
+            <p>Teams</p>
+        </div>
+        <div class="stat-block">
+            <h3>22</h3>
+            <p>Grand Prix Events</p>
+        </div>
+        <div class="stat-block">
+            <h3>21</h3>
+            <p>Countries Raced In</p>
+        </div>
     </div>
-
 </section>
 
 <!-- ==========================
-STATS SECTION
+WELCOME
 ========================== -->
 
 <section class="section">
-
-    <div class="grid-container">
-
-        <div class="card">
-            <h3>24</h3>
-            <p>Drivers</p>
-        </div>
-
-        <div class="card">
-            <h3>12</h3>
-            <p>Teams</p>
-        </div>
-
-        <div class="card">
-            <h3>24</h3>
-            <p>Grand Prix Events</p>
-        </div>
-
-        <div class="card">
-            <h3>24</h3>
-            <p>Race Circuits</p>
-        </div>
-
+    <div class="hero-card">
+        <div class="eyebrow">Welcome</div>
+        <h2 class="section-heading">Your Ultimate F1 Companion</h2>
+        <p>
+            Explore Formula 1 drivers, teams, race schedules, championship
+            statistics and circuit locations from around the world — all
+            updated for the sport's biggest regulation change in a decade.
+        </p>
     </div>
-
 </section>
 
-<section class="section">
-  <h2>🏎 Driver Face-Off</h2>
-
-  <div class="compare-box">
-
-    <input id="driverA" placeholder="Driver 1 (e.g. Verstappen)">
-    <span class="vs">VS</span>
-    <input id="driverB" placeholder="Driver 2 (e.g. Hamilton)">
-
-    <button onclick="compareDrivers()">Compare</button>
-
-    <div id="compareResult"></div>
-
-  </div>
-</section>
 <!-- ==========================
 FEATURED DRIVER
 ========================== -->
 
 <section class="section">
-
-    <h2>Featured Driver</h2>
-
-    <div id="featuredDriverCard">
-        Loading Featured Driver...
+    <div class="section-head">
+        <div class="eyebrow">Spotlight</div>
+        <h2 class="section-heading">Featured Driver</h2>
+        <p class="section-sub">A different name from the grid every few seconds.</p>
     </div>
 
+    <div id="featuredDriverCard">Loading featured driver…</div>
+</section>
+
+<!-- ==========================
+DRIVER FACE-OFF
+========================== -->
+
+<section class="section">
+    <div class="section-head">
+        <div class="eyebrow">Head to Head</div>
+        <h2 class="section-heading">Driver Face-Off</h2>
+        <p class="section-sub">Compare two drivers on career wins and championships.</p>
+    </div>
+
+    <div class="compare-box">
+        <input id="driverA" placeholder="Driver 1 (e.g. Verstappen)">
+        <span class="vs">VS</span>
+        <input id="driverB" placeholder="Driver 2 (e.g. Hamilton)">
+        <button onclick="compareDrivers()">Compare</button>
+        <div id="compareResult"></div>
+    </div>
 </section>
 
 <!-- ==========================
 SEARCH
 ========================== -->
 
-<section class="section">
-
-    <h2>Search Drivers</h2>
-
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search for a driver..."
-    >
-
+<section class="section section-tight">
+    <div class="section-head">
+        <div class="eyebrow">Find a Driver</div>
+        <h2 class="section-heading">Search Drivers</h2>
+    </div>
+    <input type="text" id="searchInput" placeholder="Search by driver name or team…">
 </section>
 
 <!-- ==========================
@@ -169,28 +149,26 @@ DRIVERS
 ========================== -->
 
 <section id="drivers" class="section">
-
-    <h2>Formula 1 Drivers</h2>
-
-    <div
-        id="driversContainer"
-        class="grid-container"
-    >
+    <div class="section-head">
+        <div class="eyebrow">The Grid</div>
+        <h2 class="section-heading">2026 Formula 1 Drivers</h2>
+        <p class="section-sub">All 22 drivers across 11 teams, with career stats and this year's points.</p>
     </div>
 
+    <div id="driversContainer" class="grid-container"></div>
 </section>
 
 <!-- ==========================
-FAVOURITE DRIVER
+FAVOURITE DRIVERS
 ========================== -->
 
-<section class="section">
+<section class="section section-tight">
+    <div class="section-head">
+        <div class="eyebrow">Your Picks</div>
+        <h2 class="section-heading">Favourite Drivers</h2>
+    </div>
 
-    <h2>Favourite Driver</h2>
-
-    <div id="favouriteDriver">
-    No favourite driver selected.
-</div>
+    <div id="favouriteDriver">No favourite drivers selected yet.</div>
 </section>
 
 <!-- ==========================
@@ -198,32 +176,42 @@ TEAMS
 ========================== -->
 
 <section id="teams" class="section">
-
-    <h2>Formula 1 Teams</h2>
-
-    <div
-        id="teamsContainer"
-        class="grid-container"
-    >
+    <div class="section-head">
+        <div class="eyebrow">Constructors</div>
+        <h2 class="section-heading">2026 Formula 1 Teams</h2>
+        <p class="section-sub">Eleven constructors, including new manufacturers Audi and Cadillac.</p>
     </div>
 
+    <div id="teamsContainer" class="grid-container"></div>
 </section>
 
 <!-- ==========================
-COUNTDOWN SECTION
+STANDINGS
 ========================== -->
 
-<section class="section">
-
-    <h2>Next Race Countdown</h2>
-
-    <div class="card">
-<section id="countdownSection">
-    <div id="countdown"></div>
-</section>
-
+<section id="standingsSection" class="section">
+    <div class="section-head">
+        <div class="eyebrow">Championship</div>
+        <h2 class="section-heading">Drivers' Standings</h2>
+        <p class="section-sub">Ranked by a weighted score of career wins and titles — not official FIA points.</p>
     </div>
 
+    <div id="standingsContainer"></div>
+</section>
+
+<!-- ==========================
+COUNTDOWN
+========================== -->
+
+<section id="countdownSection" class="section section-tight">
+    <div class="section-head">
+        <div class="eyebrow">Up Next</div>
+        <h2 class="section-heading">Next Race Countdown</h2>
+    </div>
+
+    <div class="card">
+        <div id="countdown"></div>
+    </div>
 </section>
 
 <!-- ==========================
@@ -231,15 +219,13 @@ RACES
 ========================== -->
 
 <section id="races" class="section">
-
-    <h2>2026 Race Calendar</h2>
-
-    <div
-        id="racesContainer"
-        class="grid-container"
-    >
+    <div class="section-head">
+        <div class="eyebrow">Calendar</div>
+        <h2 class="section-heading">2026 Race Calendar</h2>
+        <p class="section-sub">22 Grands Prix across five continents, following the removal of the Bahrain and Saudi Arabian rounds.</p>
     </div>
 
+    <div id="racesContainer" class="grid-container"></div>
 </section>
 
 <!-- ==========================
@@ -247,76 +233,43 @@ MAP
 ========================== -->
 
 <section id="map-section" class="section">
-
-    <h2>F1 Circuit Locations</h2>
-
-    <p>
-        Explore Formula 1 circuits around the world.
-    </p>
+    <div class="section-head">
+        <div class="eyebrow">Around the World</div>
+        <h2 class="section-heading">F1 Circuit Locations</h2>
+        <p class="section-sub">Every 2026 circuit, plotted on the map. Hover a marker for details.</p>
+    </div>
 
     <div id="map"></div>
-
 </section>
-<div id="standingsContainer"></div>
+
 <!-- ==========================
 FACTS
 ========================== -->
 
-<section id="facts" class="section">
-
-    <h2>Formula 1 Facts</h2>
-
-    <div class="grid-container">
-
-        <div class="card">
-            <h3>Fastest Pit Stops</h3>
-            <p>
-                Modern F1 pit stops can be completed
-                in under 2 seconds.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Top Speed</h3>
-            <p>
-                F1 cars can exceed 370 km/h
-                on long straights.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Global Sport</h3>
-            <p>
-                Formula 1 races on multiple
-                continents each season.
-            </p>
-        </div>
-
+<section id="facts" class="section section-tight">
+    <div class="section-head">
+        <div class="eyebrow">Trivia</div>
+        <h2 class="section-heading">Formula 1 Facts</h2>
     </div>
 
+    <div class="grid-container">
+        <div class="card">
+            <h3>Did You Know?</h3>
+            <p>Modern F1 pit stops can be completed in under 2 seconds.</p>
+        </div>
+    </div>
 </section>
 
 <!-- ==========================
 JOIN FANS
 ========================== -->
 
-<section class="section">
-
-    <h2>Join The Grid</h2>
-
+<section class="section section-tight">
     <div class="about-card">
-
-        <p>
-            Stay connected with the latest Formula 1
-            news, race weekends and championship action.
-        </p>
-
-        <button>
-            Join F1 Fans
-        </button>
-
+        <h2 class="section-heading" style="font-size:1.5rem;">Join The Grid</h2>
+        <p>Stay connected with the latest Formula 1 news, race weekends and championship action.</p>
+        <button>Join F1 Fans</button>
     </div>
-
 </section>
 
 <!-- ==========================
@@ -324,47 +277,34 @@ ABOUT
 ========================== -->
 
 <section id="about" class="section">
-
-    <h2>About F1 Race Hub</h2>
-
-    <div class="about-card">
-
-        <p>
-            F1 Race Hub is a Formula 1 fan platform
-            designed to provide quick access to driver
-            information, team profiles, race schedules,
-            championship data and interactive circuit maps.
-        </p>
-
-        <p>
-            Whether you're a new fan or a long-time follower,
-            F1 Race Hub keeps the excitement of Formula 1
-            just a click away.
-        </p>
-
+    <div class="section-head">
+        <div class="eyebrow">About</div>
+        <h2 class="section-heading">About F1 Race Hub</h2>
     </div>
 
+    <div class="about-card">
+        <p>
+            F1 Race Hub is a Formula 1 fan platform designed to provide quick
+            access to driver information, team profiles, race schedules,
+            championship data and interactive circuit maps.
+        </p>
+        <p>
+            Whether you're a new fan or a long-time follower, F1 Race Hub
+            keeps the excitement of Formula 1 just a click away.
+        </p>
+    </div>
 </section>
-
 
 <!-- ==========================
 FOOTER
 ========================== -->
 
 <footer>
-
-    <p>
-        © 2026 Ammara Badat |
-        Built For Formula 1 Fans
-    </p>
-
+    <p>© 2026 Ammara Badat | Built For Formula 1 Fans | Fan project, not affiliated with Formula 1 or the FIA</p>
 </footer>
 
 <!-- Leaflet JS -->
-<script
-src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-</script>
-
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="script.js"></script>
 
 </body>
