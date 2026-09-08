@@ -101,7 +101,7 @@
     renderFans();
 
     form.reset();
-    showMessage(`Welcome to the grid, ${name}! 🏁`, false);
+    showMessage(`Welcome to the grid, ${name}! `, false);
   }
 
   function handleListClick(event) {
