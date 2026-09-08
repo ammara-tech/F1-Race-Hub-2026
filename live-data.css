@@ -1,0 +1,96 @@
+/* =====================================
+   LIVE DATA — standalone widget styles
+   Namespaced under .live-status / .podium so it never
+   collides with the rest of style.css.
+===================================== */
+
+.live-status{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    font-size:.82rem;
+    font-weight:600;
+    margin-top:.6rem;
+    padding:.35rem .7rem;
+    border-radius:4px;
+    background:#1C1C26;
+    border:1px solid #2C2C38;
+}
+
+.live-status--live{
+    color:#7CD98A;
+    border-color:rgba(124,217,138,.35);
+}
+
+.live-status--cached{
+    color:#F5C15C;
+    border-color:rgba(245,193,92,.35);
+}
+
+.live-status--checking{
+    color:#9A9AA5;
+}
+
+#lastRaceCard h3{
+    color:#FFFFFF;
+    font-size:1.1rem;
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:.3rem;
+}
+
+#lastRaceCard > p{
+    color:#9A9AA5;
+    font-size:.85rem;
+    margin-bottom:1rem;
+}
+
+.podium{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.podium-row{
+    display:grid;
+    grid-template-columns:44px 1fr auto;
+    align-items:center;
+    gap:12px;
+    background:#1C1C26;
+    border:1px solid #2C2C38;
+    border-radius:4px;
+    padding:.7rem 1rem;
+}
+
+.podium-row--p1{
+    border-color:#E10600;
+}
+
+.podium-pos{
+    font-family:"Titillium Web",sans-serif;
+    font-weight:900;
+    font-style:italic;
+    color:#E10600;
+}
+
+.podium-name{
+    font-weight:700;
+    color:#FFFFFF;
+}
+
+.podium-team{
+    font-size:.78rem;
+    color:#9A9AA5;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
+
+@media(max-width:600px){
+    .podium-row{
+        grid-template-columns:34px 1fr;
+    }
+    .podium-team{
+        grid-column:2;
+        font-size:.7rem;
+    }
+}
