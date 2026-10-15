@@ -40,7 +40,7 @@ export function carSilhouette(color) {
 
 /**
  * <img> for a local picture, or a placeholder when we don't have one.
- * options: { color, alt, className, placeholder: "initials" | "car" | "plain" }
+ * options: { color, alt, className, placeholder: "initials" | "car" | "logo" | "plain" }
  */
 export function imageHTML(group, name, options = {}) {
   const { color = "#E10600", alt = name, className = "", placeholder = "initials" } = options;
@@ -54,6 +54,10 @@ export function imageHTML(group, name, options = {}) {
 }
 
 export function placeholderHTML(name, color, kind, className = "") {
+  if (kind === "logo") {
+    // team name as a word-mark in the team colour
+    return `<div class="photo photo-ph photo-ph--logo ${className}" style="--ph:${escapeHtml(color)}"><span>${escapeHtml(name)}</span></div>`;
+  }
   if (kind === "car") {
     return `<div class="photo photo-ph photo-ph--car ${className}">${carSilhouette(color)}</div>`;
   }
@@ -73,5 +77,8 @@ document.addEventListener("error", event => {
 
 export function creditLine(info) {
   if (!info) return "";
-  return `Photo: ${escapeHtml(info.artist)} · ${escapeHtml(info.license)} · <a href="${escapeHtml(info.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>`;
+  const source = info.page
+    ? ` · <a href="${escapeHtml(info.page)}" target="_blank" rel="noopener">Source</a>`
+    : "";
+  return `Image: ${escapeHtml(info.artist)} · ${escapeHtml(info.license)}${source}`;
 }

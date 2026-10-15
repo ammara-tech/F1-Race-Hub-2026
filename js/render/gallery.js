@@ -28,8 +28,8 @@ function groups() {
       title: "Teams",
       sub: "The eleven constructors of the 2026 season.",
       items: state.teams.map(t => ({
-        group: "teams", key: t.name, title: t.name,
-        caption: t.drivers.join(" · "), tag: "", color: t.color, placeholder: "initials"
+        group: "logos", key: t.name, title: t.name,
+        caption: t.drivers.join(" · "), tag: "", color: t.color, placeholder: "logo"
       }))
     },
     {
@@ -61,8 +61,13 @@ let activeGroup = "all";
 function tileHTML(item) {
   return `
     <figure class="tile" style="--team:${escapeHtml(item.color)}">
-      <button type="button" class="tile-media" data-group="${item.group}" data-key="${escapeHtml(item.key)}" aria-label="View larger: ${escapeHtml(item.title)}">
-        ${imageHTML(item.group, item.key, { color: item.color, alt: item.title, placeholder: item.placeholder })}
+      <button type="button" class="tile-media ${item.group === "logos" ? "logo-box" : ""}" data-group="${item.group}" data-key="${escapeHtml(item.key)}" aria-label="View larger: ${escapeHtml(item.title)}">
+        ${imageHTML(item.group, item.key, {
+          color: item.color,
+          alt: item.group === "logos" ? `${item.title} logo` : item.title,
+          placeholder: item.placeholder,
+          className: item.group === "logos" ? "logo-img" : ""
+        })}
         ${item.tag ? `<span class="tile-tag">${escapeHtml(item.tag)}</span>` : ""}
       </button>
       <figcaption>

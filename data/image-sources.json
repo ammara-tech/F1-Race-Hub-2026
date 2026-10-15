@@ -1,5 +1,5 @@
 {
-  "_readme": "Where scripts/download-images.mjs looks for each picture. Sources are tried in order: {wiki} = lead photo of that English Wikipedia article (logos group: SVG logos allowed), {search} = Wikimedia Commons search, {file} = an exact Commons file name (use this to force a specific picture). Only freely licensed Commons photos are downloaded. Re-run with --force to replace existing images.",
+  "_readme": "Where scripts/download-images.mjs looks for each picture. Sources are tried in order: {wiki} = lead photo of that English Wikipedia article, {local} = a file you added to the repo yourself (e.g. images/logos/ferrari.svg). Logos: SVG allowed, and \"match\" makes sure the file name contains the team, {search} = Wikimedia Commons search, {file} = an exact Commons file name (use this to force a specific picture). Only freely licensed Commons photos are downloaded. Re-run with --force to replace existing images.",
 
   "drivers": [
     { "slug": "max-verstappen", "label": "Max Verstappen", "sources": [{"wiki": "Max Verstappen"}] },

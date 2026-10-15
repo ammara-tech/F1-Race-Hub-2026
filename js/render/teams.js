@@ -17,8 +17,8 @@ export function renderTeams(list) {
 
     return `
       <article class="card team-card" style="border-left-color:${color}">
-        <div class="team-photo">
-          ${imageHTML("cars", team.name, { color, alt: `${team.car || team.name} car`, placeholder: "car" })}
+        <div class="team-logo logo-box">
+          ${imageHTML("logos", team.name, { color, alt: `${team.name} logo`, placeholder: "logo", className: "logo-img" })}
           ${standing ? `<span class="pos-badge">P${standing.position}</span>` : ""}
         </div>
         <div class="team-swatch" style="background:${color}"></div>

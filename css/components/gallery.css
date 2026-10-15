@@ -60,8 +60,12 @@
 .tile:hover .tile-media .photo{ transform:scale(1.05); }
 
 .gallery-grid--cars .photo,
-.gallery-grid--circuits .photo,
-.gallery-grid--teams .photo{ object-position:center; }
+.gallery-grid--circuits .photo{ object-position:center; }
+
+.tile-media.logo-box,
+.tile-media.logo-box:hover{ background:#F4F4F6; }
+
+.tile:hover .tile-media .logo-img{ transform:scale(1.03); }
 
 .tile-tag{
     position:absolute;

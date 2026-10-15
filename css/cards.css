@@ -178,6 +178,37 @@
 
 .driver-card .card-actions > *{ flex:1; }
 
+/* ---------- logos (shared) ---------- */
+
+/* Logos sit on a light panel in both themes so dark logos stay visible */
+.logo-box{
+    position:relative;
+    background:#F4F4F6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.logo-img.photo{
+    object-fit:contain;
+    object-position:center;
+    padding:12% 14%;
+}
+
+.photo-ph--logo{
+    background:#F4F4F6;
+    padding:1rem;
+    text-align:center;
+}
+
+.photo-ph--logo span{
+    color:var(--ph);
+    text-shadow:none;
+    font-size:clamp(1.3rem,3vw,2rem);
+    text-transform:uppercase;
+    line-height:1.05;
+}
+
 /* ---------- team card ---------- */
 
 .team-card{
@@ -186,17 +217,14 @@
     overflow:hidden;
 }
 
-.team-card > *:not(.team-photo){ margin-left:1.4rem; margin-right:1.4rem; }
+.team-card > *:not(.team-logo){ margin-left:1.4rem; margin-right:1.4rem; }
 
-.team-photo{
-    position:relative;
+.team-logo{
     aspect-ratio:16 / 9;
-    background:var(--panel-3);
     overflow:hidden;
     margin-bottom:1rem;
+    border-bottom:1px solid var(--line);
 }
-
-.team-photo .photo{ object-position:center; }
 
 .team-swatch{
     height:6px;

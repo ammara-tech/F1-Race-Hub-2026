@@ -8,7 +8,7 @@ const container = document.getElementById("creditsList");
 
 const GROUP_TITLES = {
   drivers: "Drivers",
-  teams: "Teams",
+  logos: "Team logos",
   cars: "Cars",
   circuits: "Circuits",
   history: "History"
@@ -31,7 +31,9 @@ export function renderCredits(credits) {
         ${Object.values(items).map(info => `
           <li>
             <strong>${escapeHtml(info.label)}</strong> —
-            <a href="${escapeHtml(info.page)}" target="_blank" rel="noopener">${escapeHtml(info.title)}</a>
+            ${info.page
+              ? `<a href="${escapeHtml(info.page)}" target="_blank" rel="noopener">${escapeHtml(info.title)}</a>`
+              : escapeHtml(info.title)}
             by ${escapeHtml(info.artist)}, ${escapeHtml(info.license)}
           </li>`).join("")}
       </ul>

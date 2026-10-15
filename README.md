@@ -12,7 +12,8 @@ A Formula 1 fan site for the 2026 season with live standings and results, driver
 - **Search and sort** drivers, save favourites, compare drivers head to head.
 - **Light/dark mode** toggle, remembered per browser.
 - **Circuit map** whose popups show a photo of each venue.
-- **Gallery & History** (`gallery.html`): photos of every driver, team, car and circuit, a timeline of F1 from 1950 to 2026, and photo credits.
+- **Team logos** on the team cards; car photos appear in the gallery's Cars section.
+- **Gallery & History** (`gallery.html`): photos of every driver, car and circuit, team logos, a timeline of F1 from 1950 to 2026, and photo credits.
 
 ## Running it
 
@@ -30,6 +31,8 @@ All photos are stored in `images/`, so they always load. They come from **Wikime
 - `scripts/download-images.mjs` downloads them and writes `data/image-credits.json`.
 - The **Download images** GitHub Action runs the script automatically whenever `image-sources.json` changes. You can also run it from the *Actions* tab and tick *force* to refresh everything.
 
+**Team logos** live in `images/logos/`. Wikimedia has no freely licensed logo for Ferrari or Racing Bulls, so those two show the team name in team colours. To use your own logo file, add it (e.g. `images/logos/ferrari.svg`) and put `{ "local": "images/logos/ferrari.svg" }` first in that team's sources in `data/image-sources.json`, then push.
+
 To swap a photo, find one you like on [commons.wikimedia.org](https://commons.wikimedia.org) and put its file name first in that item's sources, e.g. `{ "file": "Lewis Hamilton 2026.jpg" }`. Then push and the Action fetches it. To run the script locally: `node scripts/download-images.mjs` (Node 18+).
 
 ## Project structure
@@ -42,7 +45,7 @@ data/
   history.json         F1 history timeline
   image-sources.json   where each photo comes from
   image-credits.json   generated: photo paths, authors, licences
-images/                generated: drivers, teams, cars, circuits, history
+images/                generated: drivers, logos, cars, circuits, history
 css/
   base.css             theme colours (dark + light), reset, buttons, chips
   layout.css           header, nav, sections, footer

@@ -8,6 +8,8 @@
 //   node scripts/download-images.mjs drivers    # only one group
 //
 // Needs Node 18+ (built-in fetch). Sources live in data/image-sources.json.
+// To use a file you added yourself, put { "local": "images/logos/x.svg" } first
+// in that item's sources (optionally with "credit", "license", "source").
 // Runs automatically via .github/workflows/download-images.yml.
 // =====================================================================
 
@@ -113,6 +115,14 @@ async function fromSearch(query, logo = false, match = null) {
 async function resolve(item, logo = false) {
   const sources = [...item.sources, { search: logo ? `${item.label} logo` : item.label }];
   for (const src of sources) {
+    if (src.local) {
+      // a file you added to the repo yourself, e.g. { "local": "images/logos/ferrari.svg" }
+      if (await exists(path.join(ROOT, src.local))) {
+        return { local: src.local, file: path.basename(src.local), artist: src.credit || "Supplied by the site owner", license: src.license || "Used with permission", page: src.source || "", via: JSON.stringify(src) };
+      }
+      continue;
+    }
+
     try {
       const c = src.file ? await commonsFile(src.file, logo)
         : src.wiki ? await fromWikipedia(src.wiki, logo)
@@ -173,14 +183,19 @@ async function main() {
         continue;
       }
 
-      const ext = (path.extname(new URL(found.url).pathname) || ".jpg").toLowerCase().replace(".jpeg", ".jpg");
-      const rel = `images/${group}/${item.slug}${ext}`;
+      let rel;
+      if (found.local) {
+        rel = found.local;
+      } else {
+        const ext = (path.extname(new URL(found.url).pathname) || ".jpg").toLowerCase().replace(".jpeg", ".jpg");
+        rel = `images/${group}/${item.slug}${ext}`;
 
-      if (existing?.src && existing.src !== rel && await exists(path.join(ROOT, existing.src))) {
-        await unlink(path.join(ROOT, existing.src));
+        if (existing?.src && existing.src !== rel && await exists(path.join(ROOT, existing.src))) {
+          await unlink(path.join(ROOT, existing.src));
+        }
+
+        await download(found.url, path.join(ROOT, rel));
       }
-
-      await download(found.url, path.join(ROOT, rel));
       credits[group][item.slug] = {
         src: rel,
         label: item.label,
