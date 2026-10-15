@@ -107,6 +107,12 @@ function applySchedule(schedule) {
         duration: ""
       };
       state.races.push(race);
+
+      // give it a map pin too, using the API's coordinates
+      const loc = apiRace.Circuit?.Location;
+      if (loc && !state.circuits.some(c => c.name === race.circuit)) {
+        state.circuits.push({ name: race.circuit, lat: Number(loc.lat), lng: Number(loc.long), country: race.country });
+      }
     }
 
     race.round = Number(apiRace.round);

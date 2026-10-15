@@ -70,6 +70,7 @@
     { "slug": "monza-circuit", "label": "Monza Circuit", "sources": [{"search": "Monza circuit Formula 1 Italian Grand Prix race"}, {"search": "Monza Parabolica"}] },
     { "slug": "madring", "label": "Madring", "sources": [{"search": "Madring circuit Madrid"}, {"search": "IFEMA Madrid"}] },
     { "slug": "baku-city-circuit", "label": "Baku City Circuit", "sources": [{"search": "Baku City Circuit"}, {"search": "Azerbaijan Grand Prix Baku"}] },
+    { "slug": "sepang-international-circuit", "label": "Sepang International Circuit", "sources": [{"search": "Sepang International Circuit grandstand"}, {"search": "Sepang International Circuit"}] },
     { "slug": "marina-bay-street-circuit", "label": "Marina Bay Street Circuit", "sources": [{"search": "Marina Bay Street Circuit night"}, {"search": "Singapore Grand Prix Marina Bay"}] },
     { "slug": "circuit-of-the-americas", "label": "Circuit of the Americas", "sources": [{"search": "Circuit of the Americas aerial"}, {"search": "Circuit of the Americas"}] },
     { "slug": "autodromo-hermanos-rodriguez", "label": "Autódromo Hermanos Rodríguez", "sources": [{"search": "Mexican Grand Prix Foro Sol stadium section"}, {"search": "Autódromo Hermanos Rodríguez Formula 1 race"}] },
