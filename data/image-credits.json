@@ -672,14 +672,6 @@
       "license": "Public domain",
       "page": "https://commons.wikimedia.org/wiki/File:Red_Bull_Racing_-_2005_Logo.png"
     },
-    "ferrari": {
-      "src": "images/logos/ferrari.svg",
-      "label": "Ferrari",
-      "title": "Ferrari World Abu Dhabi logo.svg",
-      "artist": "Ferrari S.p.A.",
-      "license": "Public domain",
-      "page": "https://commons.wikimedia.org/wiki/File:Ferrari_World_Abu_Dhabi_logo.svg"
-    },
     "aston-martin": {
       "src": "images/logos/aston-martin.svg",
       "label": "Aston Martin",

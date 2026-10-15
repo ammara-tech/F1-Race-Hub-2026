@@ -28,7 +28,7 @@
 
   "logos": [
     { "slug": "red-bull-racing", "label": "Red Bull Racing", "match": "red.?bull", "sources": [{"search": "Oracle Red Bull Racing logo"}, {"search": "Red Bull Racing logo 2024"}, {"search": "Red Bull Racing logo"}] },
-    { "slug": "ferrari", "label": "Ferrari", "match": "ferrari", "sources": [{"search": "Scuderia Ferrari logo"}, {"search": "Scuderia Ferrari HP logo"}, {"search": "Ferrari F1 logo"}] },
+    { "slug": "ferrari", "label": "Ferrari", "match": "scuderia.?ferrari", "sources": [{"search": "Scuderia Ferrari logo"}, {"search": "Scuderia Ferrari HP logo"}, {"search": "Ferrari F1 logo"}] },
     { "slug": "mclaren", "label": "McLaren", "sources": [{"search": "McLaren Racing logo"}, {"search": "McLaren logo"}] },
     { "slug": "mercedes", "label": "Mercedes", "sources": [{"search": "Mercedes-AMG Petronas F1 Team logo"}, {"search": "Mercedes-Benz logo"}] },
     { "slug": "aston-martin", "label": "Aston Martin", "match": "aston.?martin", "sources": [{"search": "Aston Martin Aramco F1 Team logo"}, {"search": "Aston Martin F1 logo"}, {"search": "Aston Martin Lagonda logo"}] },
