@@ -1,0 +1,50 @@
+name: Download images
+
+# Fetches freely licensed photos from Wikimedia Commons into images/
+# and commits them, so the site serves every picture from its own folder.
+# Runs when image-sources.json changes, or manually from the Actions tab.
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-download every image (replace existing ones)"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - data/image-sources.json
+      - scripts/download-images.mjs
+
+permissions:
+  contents: write
+
+concurrency:
+  group: download-images
+  cancel-in-progress: false
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download images
+        run: node scripts/download-images.mjs ${{ inputs.force && '--force' || '' }}
+
+      - name: Commit new images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add images data/image-credits.json
+          if git diff --cached --quiet; then
+            echo "No image changes."
+          else
+            git commit -m "Update images from Wikimedia Commons"
+            git push
+          fi
