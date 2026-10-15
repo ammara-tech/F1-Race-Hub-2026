@@ -663,6 +663,30 @@
       "artist": "TedNauru",
       "license": "CC0",
       "page": "https://commons.wikimedia.org/wiki/File:Cadillac_Formula_1_Team_logo.png"
+    },
+    "red-bull-racing": {
+      "src": "images/logos/red-bull-racing.png",
+      "label": "Red Bull Racing",
+      "title": "Red Bull Racing - 2005 Logo.png",
+      "artist": "Unknown authorUnknown author",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Red_Bull_Racing_-_2005_Logo.png"
+    },
+    "ferrari": {
+      "src": "images/logos/ferrari.svg",
+      "label": "Ferrari",
+      "title": "Ferrari World Abu Dhabi logo.svg",
+      "artist": "Ferrari S.p.A.",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Ferrari_World_Abu_Dhabi_logo.svg"
+    },
+    "aston-martin": {
+      "src": "images/logos/aston-martin.svg",
+      "label": "Aston Martin",
+      "title": "Aston Martin wordmark.svg",
+      "artist": "Aston Martin",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Aston_Martin_wordmark.svg"
     }
   }
 }
