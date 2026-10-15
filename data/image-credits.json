@@ -606,5 +606,95 @@
       "license": "CC BY 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Audi_-_R26.jpg"
     }
+  },
+  "logos": {
+    "red-bull-racing": {
+      "src": "images/logos/red-bull-racing.png",
+      "label": "Red Bull Racing",
+      "title": "Red Bull Racing - 2005 Logo.png",
+      "artist": "Unknown authorUnknown author",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Red_Bull_Racing_-_2005_Logo.png"
+    },
+    "ferrari": {
+      "src": "images/logos/ferrari.png",
+      "label": "Ferrari",
+      "title": "De-Tomaso-Logo-1959-2004.png",
+      "artist": "Gglemos",
+      "license": "CC0",
+      "page": "https://commons.wikimedia.org/wiki/File:De-Tomaso-Logo-1959-2004.png"
+    },
+    "mclaren": {
+      "src": "images/logos/mclaren.svg",
+      "label": "McLaren",
+      "title": "McLaren 2018 logo.svg",
+      "artist": "McLaren",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:McLaren_2018_logo.svg"
+    },
+    "mercedes": {
+      "src": "images/logos/mercedes.svg",
+      "label": "Mercedes",
+      "title": "Mercedes-AMG Petronas F1 Team logo (2026).svg",
+      "artist": "Mercedes-AMG Petronas F1 Team",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Mercedes-AMG_Petronas_F1_Team_logo_(2026).svg"
+    },
+    "aston-martin": {
+      "src": "images/logos/aston-martin.svg",
+      "label": "Aston Martin",
+      "title": "BWT Racing Point Logo.svg",
+      "artist": "Racing Point UK Limited",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:BWT_Racing_Point_Logo.svg"
+    },
+    "alpine": {
+      "src": "images/logos/alpine.svg",
+      "label": "Alpine",
+      "title": "Alpine F1 Team Logo.svg",
+      "artist": "Alpine F1 Team",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Alpine_F1_Team_Logo.svg"
+    },
+    "williams": {
+      "src": "images/logos/williams.svg",
+      "label": "Williams",
+      "title": "Williams Racing 2022 logo.svg",
+      "artist": "Williams Racing",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Williams_Racing_2022_logo.svg"
+    },
+    "haas": {
+      "src": "images/logos/haas.svg",
+      "label": "Haas",
+      "title": "Haas F1 Team logo 2019.svg",
+      "artist": "Haas F1 Team",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Haas_F1_Team_logo_2019.svg"
+    },
+    "racing-bulls": {
+      "src": "images/logos/racing-bulls.png",
+      "label": "Racing Bulls",
+      "title": "Red Bull Racing - 2005 Logo.png",
+      "artist": "Unknown authorUnknown author",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Red_Bull_Racing_-_2005_Logo.png"
+    },
+    "audi": {
+      "src": "images/logos/audi.svg",
+      "label": "Audi",
+      "title": "Audif1.com logo17.svg",
+      "artist": "Audi Revolut F1 Team / Sauber Motorsports AG",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Audif1.com_logo17.svg"
+    },
+    "cadillac-f1": {
+      "src": "images/logos/cadillac-f1.png",
+      "label": "Cadillac F1",
+      "title": "Cadillac Formula 1 Team logo.png",
+      "artist": "TedNauru",
+      "license": "CC0",
+      "page": "https://commons.wikimedia.org/wiki/File:Cadillac_Formula_1_Team_logo.png"
+    }
   }
 }
