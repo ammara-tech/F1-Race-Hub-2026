@@ -525,6 +525,14 @@
       "artist": "Nascar9919",
       "license": "CC BY 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:2024_Las_Vegas_Grand_Prix_at_the_Sphere_-_Friday,_November_22,_Orbi.jpg"
+    },
+    "lusail-international-circuit": {
+      "src": "images/circuits/lusail-international-circuit.jpg",
+      "label": "Lusail International Circuit",
+      "title": "Qatar GP 2021. Pol Espargaro y Stefan Bradl en carrera - 51079776027.jpg",
+      "artist": "Box Repsol",
+      "license": "CC BY 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Qatar_GP_2021._Pol_Espargaro_y_Stefan_Bradl_en_carrera_-_51079776027.jpg"
     }
   },
   "history": {
@@ -671,6 +679,14 @@
       "artist": "Lukas Raich",
       "license": "CC BY-SA 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:FIA_F1_Austria_2025_Nr._4_Norris.jpg"
+    },
+    "2026": {
+      "src": "images/history/2026.jpg",
+      "label": "Audi R26",
+      "title": "2026 Chinese GP - Audi - R26.jpg",
+      "artist": "Liauzh",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Audi_-_R26.jpg"
     }
   }
 }
