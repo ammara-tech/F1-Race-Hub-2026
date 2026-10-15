@@ -178,14 +178,6 @@
     }
   },
   "teams": {
-    "red-bull-racing": {
-      "src": "images/teams/red-bull-racing.jpg",
-      "label": "Red Bull Racing",
-      "title": "Replica of Red Bull Racing RB19 (24021012233).jpg",
-      "artist": "先従隗始",
-      "license": "CC0",
-      "page": "https://commons.wikimedia.org/wiki/File:Replica_of_Red_Bull_Racing_RB19_(24021012233).jpg"
-    },
     "ferrari": {
       "src": "images/teams/ferrari.jpg",
       "label": "Ferrari",
@@ -193,30 +185,6 @@
       "artist": "Hatsukari715",
       "license": "Public domain",
       "page": "https://commons.wikimedia.org/wiki/File:Scuderia_Ferrari_Pit_Stop1.JPG"
-    },
-    "mclaren": {
-      "src": "images/teams/mclaren.jpg",
-      "label": "McLaren",
-      "title": "Fale F1 Monza 2004 73.jpg",
-      "artist": "Fabio Alessandro Locati",
-      "license": "CC BY-SA 3.0",
-      "page": "https://commons.wikimedia.org/wiki/File:Fale_F1_Monza_2004_73.jpg"
-    },
-    "mercedes": {
-      "src": "images/teams/mercedes.jpg",
-      "label": "Mercedes",
-      "title": "Concesionario de Mercedes-Benz, Múnich, Alemania, 2013-03-30, DD 25.JPG",
-      "artist": "Diego Delso",
-      "license": "CC BY-SA 3.0",
-      "page": "https://commons.wikimedia.org/wiki/File:Concesionario_de_Mercedes-Benz,_M%C3%BAnich,_Alemania,_2013-03-30,_DD_25.JPG"
-    },
-    "aston-martin": {
-      "src": "images/teams/aston-martin.jpg",
-      "label": "Aston Martin",
-      "title": "2019 Aston Martin Vantage V8 Automatic 4.0 (1).jpg",
-      "artist": "Vauxford",
-      "license": "CC BY-SA 4.0",
-      "page": "https://commons.wikimedia.org/wiki/File:2019_Aston_Martin_Vantage_V8_Automatic_4.0_(1).jpg"
     },
     "alpine": {
       "src": "images/teams/alpine.jpg",
@@ -242,14 +210,6 @@
       "license": "CC BY 2.0",
       "page": "https://commons.wikimedia.org/wiki/File:Haas_F1_Team_2017_United_States_GP_(37946707226).jpg"
     },
-    "racing-bulls": {
-      "src": "images/teams/racing-bulls.jpg",
-      "label": "Racing Bulls",
-      "title": "Formel3 racing car 2 amk.jpg",
-      "artist": "user:AngMoKio",
-      "license": "CC BY-SA 2.5",
-      "page": "https://commons.wikimedia.org/wiki/File:Formel3_racing_car_2_amk.jpg"
-    },
     "audi": {
       "src": "images/teams/audi.jpg",
       "label": "Audi",
@@ -257,14 +217,6 @@
       "artist": "Der Alf",
       "license": "CC BY 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:F1_2026,_Audi_F1_Team,_Audi_R26,_Nico_H%C3%BClkenberg,_Spa_Francorchamps_(55425960870).jpg"
-    },
-    "cadillac-f1": {
-      "src": "images/teams/cadillac-f1.png",
-      "label": "Cadillac F1",
-      "title": "Cadillac Formula 1 Team logo.png",
-      "artist": "TedNauru",
-      "license": "CC0",
-      "page": "https://commons.wikimedia.org/wiki/File:Cadillac_Formula_1_Team_logo.png"
     }
   },
   "cars": {
@@ -454,14 +406,6 @@
       "license": "CC BY-SA 3.0",
       "page": "https://commons.wikimedia.org/wiki/File:Circuit_Park_Zandvoort_aerial_photo.jpg"
     },
-    "monza-circuit": {
-      "src": "images/circuits/monza-circuit.jpg",
-      "label": "Monza Circuit",
-      "title": "Autodromo Nazionale di Monza, Italy (Ank Kumar) 04.jpg",
-      "artist": "Ank Kumar",
-      "license": "CC BY-SA 4.0",
-      "page": "https://commons.wikimedia.org/wiki/File:Autodromo_Nazionale_di_Monza,_Italy_(Ank_Kumar)_04.jpg"
-    },
     "madring": {
       "src": "images/circuits/madring.jpg",
       "label": "Madring",
@@ -494,14 +438,6 @@
       "license": "CC0",
       "page": "https://commons.wikimedia.org/wiki/File:Circuit_of_the_Americas_aerial_view_from_WN4430.jpg"
     },
-    "autodromo-hermanos-rodriguez": {
-      "src": "images/circuits/autodromo-hermanos-rodriguez.png",
-      "label": "Autódromo Hermanos Rodríguez",
-      "title": "Autodromo Hermanos Rodriguez (National Circuit with Foro Sol).png",
-      "artist": "WL2392",
-      "license": "CC BY-SA 4.0",
-      "page": "https://commons.wikimedia.org/wiki/File:Autodromo_Hermanos_Rodriguez_(National_Circuit_with_Foro_Sol).png"
-    },
     "interlagos-circuit": {
       "src": "images/circuits/interlagos-circuit.jpg",
       "label": "Interlagos Circuit",
@@ -509,22 +445,6 @@
       "artist": "ProtoplasmaKid",
       "license": "CC BY-SA 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_del_Aut%C3%B3dromo_Jos%C3%A9_Carlos_Pace_05.jpg"
-    },
-    "las-vegas-street-circuit": {
-      "src": "images/circuits/las-vegas-street-circuit.png",
-      "label": "Las Vegas Street Circuit",
-      "title": "Las Vegas Strip Circuit 2023.png",
-      "artist": "Nasho3498",
-      "license": "CC BY-SA 4.0",
-      "page": "https://commons.wikimedia.org/wiki/File:Las_Vegas_Strip_Circuit_2023.png"
-    },
-    "lusail-international-circuit": {
-      "src": "images/circuits/lusail-international-circuit.jpg",
-      "label": "Lusail International Circuit",
-      "title": "Qatar GP 2021. Pol Espargaro y Stefan Bradl en carrera - 51079776027.jpg",
-      "artist": "Box Repsol",
-      "license": "CC BY 2.0",
-      "page": "https://commons.wikimedia.org/wiki/File:Qatar_GP_2021._Pol_Espargaro_y_Stefan_Bradl_en_carrera_-_51079776027.jpg"
     },
     "yas-marina-circuit": {
       "src": "images/circuits/yas-marina-circuit.jpg",
@@ -679,14 +599,6 @@
       "artist": "Lukas Raich",
       "license": "CC BY-SA 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:FIA_F1_Austria_2025_Nr._4_Norris.jpg"
-    },
-    "2026": {
-      "src": "images/history/2026.jpg",
-      "label": "2026 season",
-      "title": "Hawker Hurricane Mk. IIC - DPLA - 89d4a57c7bab92f452f19ca23d906797 (page 4).jpg",
-      "artist": "Hawker Aircraft Ltd",
-      "license": "CC0",
-      "page": "https://commons.wikimedia.org/wiki/File:Hawker_Hurricane_Mk._IIC_-_DPLA_-_89d4a57c7bab92f452f19ca23d906797_(page_4).jpg"
     }
   }
 }
