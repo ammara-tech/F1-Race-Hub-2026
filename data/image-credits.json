@@ -217,6 +217,54 @@
       "artist": "Der Alf",
       "license": "CC BY 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:F1_2026,_Audi_F1_Team,_Audi_R26,_Nico_H%C3%BClkenberg,_Spa_Francorchamps_(55425960870).jpg"
+    },
+    "red-bull-racing": {
+      "src": "images/teams/red-bull-racing.jpg",
+      "label": "Red Bull Racing",
+      "title": "2026 Chinese GP - Red Bull - Isack Hadjar - FP1.jpg",
+      "artist": "Liauzh",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Red_Bull_-_Isack_Hadjar_-_FP1.jpg"
+    },
+    "mclaren": {
+      "src": "images/teams/mclaren.jpg",
+      "label": "McLaren",
+      "title": "2026 Chinese GP - McLaren - Oscar Piastri - Qualifying.jpg",
+      "artist": "Liauzh",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_McLaren_-_Oscar_Piastri_-_Qualifying.jpg"
+    },
+    "mercedes": {
+      "src": "images/teams/mercedes.jpg",
+      "label": "Mercedes",
+      "title": "2026 Chinese GP - Mercedes - Kimi Antonelli - Qualifying.jpg",
+      "artist": "Liauzh",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Mercedes_-_Kimi_Antonelli_-_Qualifying.jpg"
+    },
+    "aston-martin": {
+      "src": "images/teams/aston-martin.jpg",
+      "label": "Aston Martin",
+      "title": "2026 Chinese GP - Aston Martin - Fernando Alonso - Qualifying.jpg",
+      "artist": "Liauzh",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Aston_Martin_-_Fernando_Alonso_-_Qualifying.jpg"
+    },
+    "racing-bulls": {
+      "src": "images/teams/racing-bulls.jpg",
+      "label": "Racing Bulls",
+      "title": "2026 Chinese GP - Racing Bulls - Arvid Lindblad - Qualifying.jpg",
+      "artist": "Liauzh",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Racing_Bulls_-_Arvid_Lindblad_-_Qualifying.jpg"
+    },
+    "cadillac-f1": {
+      "src": "images/teams/cadillac-f1.jpg",
+      "label": "Cadillac F1",
+      "title": "2026 Chinese GP - Cadillac - Sergio Perez - FP1.jpg",
+      "artist": "Liauzh",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Cadillac_-_Sergio_Perez_-_FP1.jpg"
     }
   },
   "cars": {
@@ -453,6 +501,38 @@
       "artist": "TravelPhotosNL",
       "license": "CC BY-SA 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:North_Grandstand_at_the_Yas_Marina_circuit_in_Abu_Dhabi.jpg"
+    },
+    "monza-circuit": {
+      "src": "images/circuits/monza-circuit.jpg",
+      "label": "Monza Circuit",
+      "title": "Fale F1 Monza 2004 161.jpg",
+      "artist": "Fabio Alessandro Locati",
+      "license": "CC BY-SA 3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Fale_F1_Monza_2004_161.jpg"
+    },
+    "autodromo-hermanos-rodriguez": {
+      "src": "images/circuits/autodromo-hermanos-rodriguez.jpg",
+      "label": "Autódromo Hermanos Rodríguez",
+      "title": "Autódromo Hermanos Rodríguez, June 4, 2018 SkySat.jpg",
+      "artist": "Planet Labs, Inc.",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Aut%C3%B3dromo_Hermanos_Rodr%C3%ADguez,_June_4,_2018_SkySat.jpg"
+    },
+    "las-vegas-street-circuit": {
+      "src": "images/circuits/las-vegas-street-circuit.jpg",
+      "label": "Las Vegas Street Circuit",
+      "title": "2024 Las Vegas Grand Prix at the Sphere - Friday, November 22, Orbi.jpg",
+      "artist": "Nascar9919",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:2024_Las_Vegas_Grand_Prix_at_the_Sphere_-_Friday,_November_22,_Orbi.jpg"
+    },
+    "lusail-international-circuit": {
+      "src": "images/circuits/lusail-international-circuit.jpg",
+      "label": "Lusail International Circuit",
+      "title": "Qatar GP 2021. Pol Espargaro y Stefan Bradl en carrera - 51079776027.jpg",
+      "artist": "Box Repsol",
+      "license": "CC BY 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Qatar_GP_2021._Pol_Espargaro_y_Stefan_Bradl_en_carrera_-_51079776027.jpg"
     }
   },
   "history": {
@@ -599,6 +679,14 @@
       "artist": "Lukas Raich",
       "license": "CC BY-SA 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:FIA_F1_Austria_2025_Nr._4_Norris.jpg"
+    },
+    "2026": {
+      "src": "images/history/2026.webp",
+      "label": "2026 season",
+      "title": "1955 Australian Grand Prix Jack Brabham and Stephen Tillett.webp",
+      "artist": "NRoss427",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:1955_Australian_Grand_Prix_Jack_Brabham_and_Stephen_Tillett.webp"
     }
   }
 }
