@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery &amp; History — F1 Race Hub</title>
+    <meta name="description" content="Photos of the 2026 Formula 1 drivers, teams, cars and circuits, and the history of F1 from 1950 to today.">
+
+    <!-- Apply the saved light/dark choice before the page paints -->
+    <script>
+        try {
+            const t = JSON.parse(localStorage.getItem("f1Theme"));
+            if (t) document.documentElement.dataset.theme = t;
+        } catch (e) {}
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/components/modal.css">
+    <link rel="stylesheet" href="css/components/gallery.css">
+</head>
+<body>
+
+<header id="top" class="header-compact">
+    <div class="header-overlay">
+        <div class="header-kicker"><span class="dot"></span> F1 Race Hub</div>
+        <h1><span>Gallery</span><span class="accent">&amp; History</span></h1>
+        <p>Drivers, teams, cars and circuits from the 2026 grid — plus how Formula 1 got here, from 1950 to today.</p>
+    </div>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#history">History</a>
+    <a href="#credits">Photo credits</a>
+    <button type="button" class="theme-toggle ghost small" aria-pressed="false">☀ Light</button>
+</nav>
+
+<!-- ==========================
+GALLERY
+========================== -->
+
+<section id="gallery" class="section">
+    <div class="section-head">
+        <div class="eyebrow">2026 Season</div>
+        <h2 class="section-heading">Gallery</h2>
+        <p class="section-sub">Tap any photo to see it larger.</p>
+    </div>
+
+    <div id="galleryFilters" class="chip-row" role="group" aria-label="Show gallery section">
+        <button type="button" class="chip" data-group="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-group="drivers" aria-pressed="false">Drivers</button>
+        <button type="button" class="chip" data-group="teams" aria-pressed="false">Teams</button>
+        <button type="button" class="chip" data-group="cars" aria-pressed="false">Cars</button>
+        <button type="button" class="chip" data-group="circuits" aria-pressed="false">Circuits</button>
+    </div>
+
+    <div id="galleryContainer"></div>
+</section>
+
+<!-- ==========================
+HISTORY
+========================== -->
+
+<section id="history" class="section">
+    <div class="section-head">
+        <div class="eyebrow">1950 – 2026</div>
+        <h2 class="section-heading">The History of Formula 1</h2>
+        <p class="section-sub">Seventy-six years of the World Championship, in twenty moments.</p>
+    </div>
+
+    <ol id="historyTimeline" class="timeline"></ol>
+</section>
+
+<!-- ==========================
+CREDITS
+========================== -->
+
+<section id="credits" class="section">
+    <div class="section-head">
+        <div class="eyebrow">Thank you</div>
+        <h2 class="section-heading">Photo Credits</h2>
+        <p class="section-sub">All photos come from Wikimedia Commons under free licences. Click a photo's name for its source page and full licence.</p>
+    </div>
+
+    <div id="creditsList" class="credits"></div>
+</section>
+
+<dialog id="lightbox" class="modal lightbox" aria-label="Photo viewer">
+    <div class="modal-panel">
+        <button type="button" class="modal-close" data-close aria-label="Close">✕</button>
+        <div id="lightboxBody"></div>
+    </div>
+</dialog>
+
+<footer>
+    <p>© 2026 Ammara Badat | Built For Formula 1 Fans | Fan project, not affiliated with Formula 1 or the FIA</p>
+    <p><a href="index.html">Back to F1 Race Hub</a></p>
+</footer>
+
+<script type="module" src="js/gallery-main.js"></script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 // =====================================
 
 import { state } from "../state.js";
-import { escapeHtml, driverScore } from "../utils.js";
+import { escapeHtml, legacyScore } from "../utils.js";
 
 const form = document.getElementById("compareForm");
 const inputA = document.getElementById("driverA");
@@ -43,8 +43,8 @@ export function compareDrivers() {
     return;
   }
 
-  const scoreA = driverScore(a);
-  const scoreB = driverScore(b);
+  const scoreA = legacyScore(a);
+  const scoreB = legacyScore(b);
 
   let verdict;
   if (scoreA === scoreB) verdict = "🤝 Dead heat — they're level";

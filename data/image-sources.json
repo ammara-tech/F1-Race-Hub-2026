@@ -75,7 +75,7 @@
     { "slug": "autodromo-hermanos-rodriguez", "label": "Autódromo Hermanos Rodríguez", "sources": [{"search": "Mexican Grand Prix Foro Sol stadium section"}, {"search": "Autódromo Hermanos Rodríguez Formula 1 race"}] },
     { "slug": "interlagos-circuit", "label": "Interlagos Circuit", "sources": [{"search": "Autódromo José Carlos Pace Interlagos"}, {"search": "Interlagos"}] },
     { "slug": "las-vegas-street-circuit", "label": "Las Vegas Street Circuit", "sources": [{"search": "Las Vegas Grand Prix Formula 1 race Strip night"}, {"search": "Las Vegas Grand Prix Sphere"}] },
-    { "slug": "lusail-international-circuit", "label": "Lusail International Circuit", "sources": [{"search": "Qatar Grand Prix Formula One Lusail"}, {"search": "Lusail circuit Formula 1"}] },
+    { "slug": "lusail-international-circuit", "label": "Lusail International Circuit", "sources": [{"search": "Losail SkySat"}, {"search": "Lusail SkySat"}, {"search": "Losail International Circuit aerial view"}] },
     { "slug": "yas-marina-circuit", "label": "Yas Marina Circuit", "sources": [{"search": "Yas Marina Circuit"}, {"search": "Yas Marina Circuit Abu Dhabi"}] }
   ],
 
@@ -88,7 +88,7 @@
     { "slug": "1977", "label": "Renault RS01", "sources": [{"wiki": "Renault RS01"}, {"search": "Renault RS01"}] },
     { "slug": "1978", "label": "Lotus 79", "sources": [{"wiki": "Lotus 79"}, {"search": "Lotus 79"}] },
     { "slug": "1988", "label": "McLaren MP4/4", "sources": [{"wiki": "McLaren MP4/4"}, {"search": "McLaren MP4/4"}] },
-    { "slug": "1994", "label": "Ayrton Senna", "sources": [{"wiki": "Ayrton Senna"}] },
+    { "slug": "1994", "label": "Ayrton Senna statue", "sources": [{"wiki": "Ayrton Senna"}] },
     { "slug": "2000", "label": "Ferrari F2004", "sources": [{"wiki": "Ferrari F2004"}, {"search": "Ferrari F2004 Schumacher"}] },
     { "slug": "2009", "label": "Brawn BGP 001", "sources": [{"wiki": "Brawn BGP 001"}, {"search": "Brawn BGP 001"}] },
     { "slug": "2010", "label": "Red Bull RB9", "sources": [{"wiki": "Red Bull RB9"}, {"search": "Sebastian Vettel Red Bull"}] },
@@ -98,6 +98,6 @@
     { "slug": "2022", "label": "Ferrari F1-75", "sources": [{"wiki": "Ferrari F1-75"}, {"search": "Ferrari F1-75"}] },
     { "slug": "2023", "label": "Red Bull RB19", "sources": [{"wiki": "Red Bull RB19"}, {"search": "Red Bull RB19"}] },
     { "slug": "2025", "label": "McLaren MCL39", "sources": [{"wiki": "McLaren MCL39"}, {"search": "McLaren MCL39 Norris"}] },
-    { "slug": "2026", "label": "2026 season", "sources": [{"search": "2026 Australian Grand Prix start"}, {"search": "2026 Chinese GP race start"}] }
+    { "slug": "2026", "label": "Audi R26", "sources": [{"file": "2026 Chinese GP - Audi - R26.jpg"}, {"search": "2026 Chinese GP Audi"}] }
   ]
 }

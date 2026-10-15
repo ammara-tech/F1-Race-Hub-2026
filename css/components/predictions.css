@@ -1,0 +1,75 @@
+/* =====================================
+   PODIUM PREDICTOR
+===================================== */
+
+.predict-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
+    gap:22px;
+    align-items:start;
+}
+
+.predict-form{
+    display:grid;
+    gap:12px;
+    margin-top:1rem;
+}
+
+.pick{
+    display:grid;
+    grid-template-columns:70px 1fr;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+}
+
+.predict-form button{ justify-self:start; margin-top:.4rem; }
+
+.predict-message{ min-height:1.3em; color:var(--ok); font-size:.9rem; }
+.predict-message.is-error{ color:var(--err); }
+
+.predict-rules{
+    font-size:.8rem !important;
+    border-top:1px solid var(--line);
+    padding-top:.8rem;
+    margin-top:1rem !important;
+}
+
+.predict-total{
+    font-size:1.1rem;
+    margin-bottom:1rem;
+}
+
+.predict-total strong{ color:var(--f1-red); font-size:1.5rem; }
+
+.table-scroll{ overflow-x:auto; }
+
+.predict-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.88rem;
+}
+
+.predict-table th{
+    text-align:left;
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--muted);
+    padding:.4rem .5rem;
+    border-bottom:1px solid var(--line);
+}
+
+.predict-table td{
+    padding:.6rem .5rem;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+}
+
+.predict-table .score{ font-weight:900; font-size:1.1rem; }
+.predict-table .hit{ color:var(--ok); font-weight:700; }
+.predict-table .near{ color:var(--gold); font-weight:700; }
+
+@media(max-width:900px){
+    .predict-grid{ grid-template-columns:1fr; }
+}

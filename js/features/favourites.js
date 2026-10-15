@@ -4,6 +4,7 @@
 
 import { state, teamColor } from "../state.js";
 import { escapeHtml, readStorage, writeStorage } from "../utils.js";
+import { imageHTML } from "../images.js";
 
 const STORAGE_KEY = "favouriteDrivers";
 const container = document.getElementById("favouriteDriver");
@@ -51,9 +52,10 @@ export function renderFavourites() {
 
     return `
       <div class="fav-card" style="border-left:3px solid ${teamColor(driver.team)}">
-        <div>
+        <div class="fav-thumb">${imageHTML("drivers", driver.name, { color: teamColor(driver.team) })}</div>
+        <div class="fav-info">
           <h4>${escapeHtml(driver.name)}</h4>
-          <p>🏎 ${escapeHtml(driver.team)} · 🏁 ${wins} wins · 🏆 ${titles} titles</p>
+          <p>🏎 ${escapeHtml(driver.team)} · 📊 ${driver.points2026 ?? 0} pts (2026) · 🏁 ${wins} career wins · 🏆 ${titles} titles</p>
         </div>
         <button type="button" class="fav-remove" data-driver="${escapeHtml(driver.name)}">Remove</button>
       </div>

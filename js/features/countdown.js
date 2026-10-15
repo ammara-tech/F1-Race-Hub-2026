@@ -1,12 +1,13 @@
 // =====================================
-// NEXT RACE COUNTDOWN
+// NEXT RACE COUNTDOWN — counts to lights out when the start time is known
 // =====================================
 
 import { state } from "../state.js";
-import { escapeHtml, isRaceFinished } from "../utils.js";
+import { escapeHtml, isRaceFinished, raceStart, formatDate, formatLocalStart } from "../utils.js";
 
 const container = document.getElementById("countdown");
 let timer = null;
+let shownRace = null; // only rebuild the card when the next race changes
 
 function pad(n) {
   return String(n).padStart(2, "0");
@@ -22,16 +23,16 @@ function updateCountdown() {
       <p>See you next season.</p>
     `;
     clearInterval(timer);
+    shownRace = null;
     return;
   }
 
-  // data.json has no start times, so count down to the start of race day.
-  const raceDay = new Date(`${nextRace.date}T00:00:00`);
-  const diff = raceDay - now;
+  const diff = raceStart(nextRace) - now;
+  const localStart = formatLocalStart(nextRace);
 
   let timerText;
   if (diff <= 0) {
-    timerText = "🚦 It's race day!";
+    timerText = nextRace.time ? "🚦 Race in progress!" : "🚦 It's race day!";
   } else {
     const days = Math.floor(diff / 86400000);
     const hours = Math.floor((diff / 3600000) % 24);
@@ -40,17 +41,28 @@ function updateCountdown() {
     timerText = `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
   }
 
+  if (shownRace === nextRace) {
+    container.querySelector(".countdown-timer").textContent = timerText;
+    return;
+  }
+
+  shownRace = nextRace;
   container.innerHTML = `
     <h3>${escapeHtml(nextRace.name)}</h3>
     <p>${escapeHtml(nextRace.circuit)} · ${escapeHtml(nextRace.country)}</p>
-    <p><strong>${nextRace.date}</strong></p>
+    <p><strong>${localStart ? `Lights out ${localStart} (your time)` : formatDate(nextRace.date)}</strong></p>
     <div class="countdown-timer">${timerText}</div>
+    <div class="card-actions center">
+      <button type="button" class="ghost small" data-ics="${nextRace.date}">📅 Add to calendar</button>
+      <button type="button" class="ghost small" id="downloadSeasonIcs">Download full season</button>
+    </div>
   `;
 }
 
 export function startCountdown() {
   if (!container || !state.races.length) return;
 
+  shownRace = null;
   updateCountdown();
   clearInterval(timer);
   timer = setInterval(updateCountdown, 1000);

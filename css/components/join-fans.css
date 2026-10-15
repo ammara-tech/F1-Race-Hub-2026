@@ -8,7 +8,7 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:2rem;
-    background:linear-gradient(155deg,var(--f1-panel),var(--f1-panel-2));
+    background:linear-gradient(155deg,var(--panel),var(--panel-2));
     border:1px solid var(--line);
     border-left:4px solid var(--f1-red);
     border-radius:6px;
@@ -32,7 +32,7 @@
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:.08em;
-    color:var(--f1-grey);
+    color:var(--muted);
 }
 
 .fan-field input,
@@ -40,8 +40,8 @@
     padding:12px 14px;
     border-radius:4px;
     border:1px solid var(--line);
-    background:var(--f1-panel-2);
-    color:var(--f1-white);
+    background:var(--panel-2);
+    color:var(--text);
     font-family:inherit;
     font-size:.95rem;
     outline:none;
@@ -60,12 +60,12 @@
 
 .fan-join-message{
     font-size:.85rem;
-    color:#7CD98A;
+    color:var(--ok);
     min-height:1.2em;
 }
 
 .fan-join-message--error{
-    color:#FF6B6B;
+    color:var(--err);
 }
 
 .fan-roster{
@@ -90,7 +90,7 @@
 }
 
 .fan-empty{
-    color:var(--f1-grey-dim);
+    color:var(--muted-2);
     font-size:.88rem;
 }
 
@@ -98,7 +98,7 @@
     display:flex;
     align-items:center;
     gap:10px;
-    background:var(--f1-panel-2);
+    background:var(--panel-2);
     border:1px solid var(--line);
     border-radius:4px;
     padding:.6rem .8rem;
@@ -112,7 +112,7 @@
 
 .fan-chip-team{
     font-size:.72rem;
-    color:var(--f1-grey);
+    color:var(--muted);
     text-transform:uppercase;
     letter-spacing:.04em;
 }
@@ -120,7 +120,7 @@
 .fan-chip-remove{
     background:transparent;
     border:none;
-    color:var(--f1-grey-dim);
+    color:var(--muted-2);
     padding:2px 6px;
     font-size:.8rem;
     cursor:pointer;

@@ -13,7 +13,7 @@
     grid-template-columns:44px 1fr auto 140px;
     align-items:center;
     gap:16px;
-    background:var(--f1-panel);
+    background:var(--panel);
     border:1px solid var(--line);
     border-radius:6px;
     padding:.9rem 1.2rem;
@@ -28,7 +28,7 @@
     font-weight:900;
     font-style:italic;
     font-size:1.3rem;
-    color:var(--f1-grey-dim);
+    color:var(--muted-2);
 }
 
 .standing-row.p1 .standing-rank{ color:var(--f1-red); }
@@ -41,7 +41,7 @@
 .standing-name small{
     display:block;
     font-weight:400;
-    color:var(--f1-grey);
+    color:var(--muted);
     font-size:.78rem;
     margin-top:2px;
 }
@@ -68,4 +68,12 @@
 @media(max-width:900px){
     .standing-row{ grid-template-columns:34px 1fr auto; }
     .standing-row .standing-bar-track{ display:none; }
+}
+
+.standings-more{ margin-top:14px; }
+
+.standing-pts span{
+    font-size:.7rem;
+    font-weight:600;
+    color:var(--muted);
 }

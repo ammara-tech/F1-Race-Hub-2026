@@ -525,14 +525,6 @@
       "artist": "Nascar9919",
       "license": "CC BY 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:2024_Las_Vegas_Grand_Prix_at_the_Sphere_-_Friday,_November_22,_Orbi.jpg"
-    },
-    "lusail-international-circuit": {
-      "src": "images/circuits/lusail-international-circuit.jpg",
-      "label": "Lusail International Circuit",
-      "title": "Qatar GP 2021. Pol Espargaro y Stefan Bradl en carrera - 51079776027.jpg",
-      "artist": "Box Repsol",
-      "license": "CC BY 2.0",
-      "page": "https://commons.wikimedia.org/wiki/File:Qatar_GP_2021._Pol_Espargaro_y_Stefan_Bradl_en_carrera_-_51079776027.jpg"
     }
   },
   "history": {
@@ -602,7 +594,7 @@
     },
     "1994": {
       "src": "images/history/1994.jpg",
-      "label": "Ayrton Senna",
+      "label": "Ayrton Senna statue",
       "title": "Estatua Ayrton Senna.jpg",
       "artist": "Rjcastillo",
       "license": "CC BY 4.0",
@@ -679,14 +671,6 @@
       "artist": "Lukas Raich",
       "license": "CC BY-SA 4.0",
       "page": "https://commons.wikimedia.org/wiki/File:FIA_F1_Austria_2025_Nr._4_Norris.jpg"
-    },
-    "2026": {
-      "src": "images/history/2026.webp",
-      "label": "2026 season",
-      "title": "1955 Australian Grand Prix Jack Brabham and Stephen Tillett.webp",
-      "artist": "NRoss427",
-      "license": "CC BY-SA 4.0",
-      "page": "https://commons.wikimedia.org/wiki/File:1955_Australian_Grand_Prix_Jack_Brabham_and_Stephen_Tillett.webp"
     }
   }
 }

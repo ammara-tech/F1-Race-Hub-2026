@@ -1,25 +1,35 @@
 // =====================================
-// F1 RACE HUB — entry point
-// Loads data.json, then hands it to each feature module.
+// F1 RACE HUB — home page entry point
+// 1. load data.json + image list and render straight away
+// 2. fetch live standings/results from the Jolpica API and re-render
 // =====================================
 
 import { state, setData } from "./state.js";
+import { loadImageCredits } from "./images.js";
+import { loadLive } from "./api/live.js";
 
-import { renderDrivers } from "./render/drivers.js";
 import { renderTeams } from "./render/teams.js";
-import { renderRaces } from "./render/races.js";
-import { renderStandings } from "./render/standings.js";
+import { renderRaces, initRaceFilters } from "./render/races.js";
+import { renderStandings, initStandingsTabs } from "./render/standings.js";
+import { renderLastResult } from "./render/results.js";
 import { renderStats } from "./render/stats.js";
 
+import { initTheme } from "./features/theme.js";
 import { startFeaturedRotation } from "./features/featured.js";
-import { initFavourites } from "./features/favourites.js";
-import { initSearch } from "./features/search.js";
+import { initFavourites, renderFavourites } from "./features/favourites.js";
+import { initDriverList, refreshDriverList } from "./features/driver-list.js";
+import { initDriverModal } from "./features/driver-modal.js";
 import { initCompare } from "./features/compare.js";
 import { startCountdown } from "./features/countdown.js";
+import { initCalendarExport } from "./features/calendar-export.js";
+import { initPredictor, renderPredictor } from "./features/predictions.js";
 import { showMap } from "./features/map.js";
 import { initJoinFans } from "./features/join-fans.js";
+import { initLiveStatus, renderLiveStatus } from "./features/live-status.js";
 
 const DATA_URL = "./data/data.json";
+
+initTheme();
 
 function showLoadError() {
   const isFile = location.protocol === "file:";
@@ -35,17 +45,34 @@ function showLoadError() {
 
 async function fetchData() {
   const response = await fetch(DATA_URL);
-
-  if (!response.ok) {
-    throw new Error(`${DATA_URL} not found (HTTP ${response.status})`);
-  }
-
+  if (!response.ok) throw new Error(`${DATA_URL} not found (HTTP ${response.status})`);
   return response.json();
 }
 
+// Everything that depends on points, results or race dates
+function renderLiveParts() {
+  renderStats();
+  refreshDriverList();
+  renderTeams(state.teams);
+  renderStandings();
+  renderLastResult();
+  renderRaces();
+  renderFavourites();
+  renderPredictor();
+  startCountdown();
+  showMap();
+  renderLiveStatus();
+}
+
+async function refreshLive(force = false) {
+  await loadLive({ force });
+  renderLiveParts();
+}
+
 async function init() {
+  let data;
   try {
-    setData(await fetchData());
+    [data] = await Promise.all([fetchData(), loadImageCredits()]);
   } catch (err) {
     console.error("FETCH ERROR:", err);
     showLoadError();
@@ -53,19 +80,26 @@ async function init() {
     return;
   }
 
-  renderStats();
-  renderDrivers(state.drivers);
-  renderTeams(state.teams);
-  renderRaces(state.races);
-  renderStandings();
+  setData(data);
 
-  startFeaturedRotation();
+  // first paint from local data
+  initDriverList();
+  initDriverModal();
   initFavourites();
-  initSearch();
   initCompare();
-  startCountdown();
-  showMap();
+  initStandingsTabs();
+  initRaceFilters();
+  initCalendarExport();
+  initPredictor();
   initJoinFans(state.teams);
+  initLiveStatus(() => refreshLive(true));
+  startFeaturedRotation();
+  renderLiveStatus("loading");
+  renderLiveParts();
+  renderLiveStatus("loading");
+
+  // then upgrade with live data
+  await refreshLive();
 }
 
 init();

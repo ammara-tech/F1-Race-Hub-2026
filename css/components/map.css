@@ -13,3 +13,26 @@
 
 @media(max-width:900px){ #map{ height:420px; } }
 @media(max-width:600px){ #map{ height:320px; } }
+
+/* popup with a venue photo */
+.leaflet-popup-content{ margin:0 !important; width:240px !important; }
+.leaflet-popup-content-wrapper{ padding:0; overflow:hidden; border-radius:8px; }
+
+.map-popup img{
+    display:block;
+    width:240px;
+    height:135px;
+    object-fit:cover;
+}
+
+.map-popup-body{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    padding:10px 12px 12px;
+    font-family:"Titillium Web",sans-serif;
+    font-size:.85rem;
+    line-height:1.35;
+}
+
+.map-popup-body b{ font-size:.95rem; }

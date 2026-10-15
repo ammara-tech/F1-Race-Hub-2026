@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1 Race Hub — 2026 Season</title>
-    <meta name="description" content="Drivers, teams, race calendar, live-style standings and circuit map for the 2026 Formula 1 season.">
+    <meta name="description" content="Live standings, results, drivers, teams, race calendar and circuit map for the 2026 Formula 1 season.">
+
+    <!-- Apply the saved light/dark choice before the page paints -->
+    <script>
+        try {
+            const t = JSON.parse(localStorage.getItem("f1Theme"));
+            if (t) document.documentElement.dataset.theme = t;
+        } catch (e) {}
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,12 +26,16 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/components/live.css">
     <link rel="stylesheet" href="css/components/search.css">
     <link rel="stylesheet" href="css/components/compare.css">
     <link rel="stylesheet" href="css/components/featured.css">
     <link rel="stylesheet" href="css/components/standings.css">
+    <link rel="stylesheet" href="css/components/results.css">
     <link rel="stylesheet" href="css/components/favourites.css">
     <link rel="stylesheet" href="css/components/countdown.css">
+    <link rel="stylesheet" href="css/components/predictions.css">
+    <link rel="stylesheet" href="css/components/modal.css">
     <link rel="stylesheet" href="css/components/map.css">
     <link rel="stylesheet" href="css/components/join-fans.css">
 </head>
@@ -59,16 +71,19 @@ NAVIGATION
 
 <nav>
     <a href="#home">Home</a>
+    <a href="#results">Results</a>
+    <a href="#standingsSection">Standings</a>
     <a href="#drivers">Drivers</a>
     <a href="#teams">Teams</a>
-    <a href="#standingsSection">Standings</a>
     <a href="#races">Races</a>
+    <a href="#predict">Predict</a>
     <a href="#map-section">Circuits</a>
-    <a href="#about">About</a>
+    <a href="gallery.html">Gallery &amp; History</a>
+    <button type="button" class="theme-toggle ghost small" aria-pressed="false">☀ Light</button>
 </nav>
 
 <!-- ==========================
-STATS STRIP
+STATS STRIP + LIVE STATUS
 ========================== -->
 
 <section class="section section-tight">
@@ -90,21 +105,61 @@ STATS STRIP
             <p>Countries Raced In</p>
         </div>
     </div>
+
+    <div class="live-bar">
+        <div class="live-status" data-status="loading">
+            <span class="live-dot"></span>
+            <span class="live-text">Fetching the latest results…</span>
+        </div>
+        <button type="button" class="live-refresh ghost small" title="Fetch the latest data now">↻ Refresh</button>
+    </div>
 </section>
 
 <!-- ==========================
-WELCOME
+LAST RACE RESULT
 ========================== -->
 
-<section class="section">
-    <div class="hero-card">
-        <div class="eyebrow">Welcome</div>
-        <h2 class="section-heading">Your Ultimate F1 Companion</h2>
-        <p>
-            Explore Formula 1 drivers, teams, race schedules, championship
-            statistics and circuit locations from around the world — all
-            updated for the sport's biggest regulation change in a decade.
-        </p>
+<section id="results" class="section">
+    <div class="section-head">
+        <div class="eyebrow">Live</div>
+        <h2 class="section-heading">Last Race Result</h2>
+        <p class="section-sub">The most recent Grand Prix podium, pulled from the Jolpica F1 API.</p>
+    </div>
+
+    <div id="lastResult"></div>
+</section>
+
+<!-- ==========================
+STANDINGS
+========================== -->
+
+<section id="standingsSection" class="section">
+    <div class="section-head">
+        <div class="eyebrow">Championship</div>
+        <h2 class="section-heading">2026 Standings</h2>
+        <p class="section-sub">Official championship points, updated automatically after every race.</p>
+    </div>
+
+    <div id="standingsTabs" class="chip-row" role="group" aria-label="Standings view">
+        <button type="button" class="chip" data-view="drivers" aria-pressed="true">Drivers</button>
+        <button type="button" class="chip" data-view="constructors" aria-pressed="false">Constructors</button>
+    </div>
+
+    <div id="standingsContainer"></div>
+</section>
+
+<!-- ==========================
+COUNTDOWN
+========================== -->
+
+<section id="countdownSection" class="section section-tight">
+    <div class="section-head">
+        <div class="eyebrow">Up Next</div>
+        <h2 class="section-heading">Next Race Countdown</h2>
+    </div>
+
+    <div class="card">
+        <div id="countdown"></div>
     </div>
 </section>
 
@@ -130,7 +185,7 @@ DRIVER FACE-OFF
     <div class="section-head">
         <div class="eyebrow">Head to Head</div>
         <h2 class="section-heading">Driver Face-Off</h2>
-        <p class="section-sub">Compare two drivers on career wins and championships.</p>
+        <p class="section-sub">Compare two drivers on career wins, championships and 2026 points.</p>
     </div>
 
     <form id="compareForm" class="compare-box">
@@ -144,18 +199,6 @@ DRIVER FACE-OFF
 </section>
 
 <!-- ==========================
-SEARCH
-========================== -->
-
-<section class="section section-tight">
-    <div class="section-head">
-        <div class="eyebrow">Find a Driver</div>
-        <h2 class="section-heading">Search Drivers</h2>
-    </div>
-    <input type="search" id="searchInput" placeholder="Search by driver name, team or nationality…" aria-label="Search drivers">
-</section>
-
-<!-- ==========================
 DRIVERS
 ========================== -->
 
@@ -163,7 +206,22 @@ DRIVERS
     <div class="section-head">
         <div class="eyebrow">The Grid</div>
         <h2 class="section-heading">2026 Formula 1 Drivers</h2>
-        <p class="section-sub">All 22 drivers across 11 teams, with career stats and this year's points.</p>
+        <p class="section-sub">All 22 drivers across 11 teams. Click a driver for their full profile and points chart.</p>
+    </div>
+
+    <div class="toolbar">
+        <input type="search" id="searchInput" placeholder="Search by driver name, team or nationality…" aria-label="Search drivers">
+        <label class="sort-select">
+            <span>Sort by</span>
+            <select id="driverSort">
+                <option value="points">2026 points</option>
+                <option value="wins">Career wins</option>
+                <option value="titles">World titles</option>
+                <option value="number">Car number</option>
+                <option value="team">Team</option>
+                <option value="name">Name (A–Z)</option>
+            </select>
+        </label>
     </div>
 
     <div id="driversContainer" class="grid-container"></div>
@@ -197,34 +255,6 @@ TEAMS
 </section>
 
 <!-- ==========================
-STANDINGS
-========================== -->
-
-<section id="standingsSection" class="section">
-    <div class="section-head">
-        <div class="eyebrow">Championship</div>
-        <h2 class="section-heading">Drivers' Standings</h2>
-        <p class="section-sub">Unofficial ranking: 2026 points + 3 per career win + 20 per world title. Not the official FIA standings.</p>
-    </div>
-    <div id="standingsContainer"></div>
-</section>
-
-<!-- ==========================
-COUNTDOWN
-========================== -->
-
-<section id="countdownSection" class="section section-tight">
-    <div class="section-head">
-        <div class="eyebrow">Up Next</div>
-        <h2 class="section-heading">Next Race Countdown</h2>
-    </div>
-
-    <div class="card">
-        <div id="countdown"></div>
-    </div>
-</section>
-
-<!-- ==========================
 RACES
 ========================== -->
 
@@ -232,10 +262,31 @@ RACES
     <div class="section-head">
         <div class="eyebrow">Calendar</div>
         <h2 class="section-heading">2026 Race Calendar</h2>
-        <p class="section-sub">22 Grands Prix across five continents, following the removal of the Bahrain and Saudi Arabian rounds.</p>
+        <p class="section-sub">Start times are shown in your own time zone. Add any race to your calendar.</p>
+    </div>
+
+    <div id="raceFilters" class="chip-row" role="group" aria-label="Filter races">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-filter="upcoming" aria-pressed="false">Upcoming</button>
+        <button type="button" class="chip" data-filter="completed" aria-pressed="false">Completed</button>
+        <button type="button" class="chip" data-filter="sprint" aria-pressed="false">⚡ Sprint weekends</button>
     </div>
 
     <div id="racesContainer" class="grid-container"></div>
+</section>
+
+<!-- ==========================
+PREDICTION GAME
+========================== -->
+
+<section id="predict" class="section">
+    <div class="section-head">
+        <div class="eyebrow">Game</div>
+        <h2 class="section-heading">Podium Predictor</h2>
+        <p class="section-sub">Call the top three before lights out. Your score updates automatically when the results come in.</p>
+    </div>
+
+    <div id="predictor" class="predict-grid"></div>
 </section>
 
 <!-- ==========================
@@ -246,7 +297,7 @@ MAP
     <div class="section-head">
         <div class="eyebrow">Around the World</div>
         <h2 class="section-heading">F1 Circuit Locations</h2>
-        <p class="section-sub">Every 2026 circuit, plotted on the map. Hover a marker for details.</p>
+        <p class="section-sub">Every 2026 circuit, plotted on the map. Hover or tap a marker to see the venue.</p>
     </div>
 
     <div id="map"></div>
@@ -306,16 +357,27 @@ ABOUT
 
     <div class="about-card">
         <p>
-            F1 Race Hub is a Formula 1 fan platform designed to provide quick
-            access to driver information, team profiles, race schedules,
-            championship data and interactive circuit maps.
+            F1 Race Hub is a Formula 1 fan platform with live championship
+            standings and results, driver and team profiles, the race calendar
+            and an interactive circuit map.
         </p>
         <p>
-            Whether you're a new fan or a long-time follower, F1 Race Hub
-            keeps the excitement of Formula 1 just a click away.
+            Live data comes from the free <a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener">Jolpica F1 API</a>.
+            Photos are from <a href="gallery.html#credits">Wikimedia Commons</a> under free licences.
         </p>
     </div>
 </section>
+
+<!-- ==========================
+DRIVER PROFILE POPUP
+========================== -->
+
+<dialog id="driverModal" class="modal" aria-labelledby="driverModalTitle">
+    <div class="modal-panel">
+        <button type="button" class="modal-close" data-close aria-label="Close">✕</button>
+        <div id="driverModalBody"></div>
+    </div>
+</dialog>
 
 <!-- ==========================
 FOOTER
@@ -323,6 +385,7 @@ FOOTER
 
 <footer>
     <p>© 2026 Ammara Badat | Built For Formula 1 Fans | Fan project, not affiliated with Formula 1 or the FIA</p>
+    <p><a href="gallery.html#credits">Photo credits</a> · Data: Jolpica F1 API · Map © OpenStreetMap contributors</p>
 </footer>
 
 <!-- Leaflet JS -->

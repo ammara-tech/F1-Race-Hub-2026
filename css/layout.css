@@ -11,7 +11,7 @@ header{
     overflow:hidden;
     background:
         radial-gradient(ellipse at 78% 30%, rgba(225,6,0,.16), transparent 55%),
-        linear-gradient(160deg,#0B0B0F 0%,#111116 55%,#0B0B0F 100%);
+        linear-gradient(160deg,var(--bg) 0%,var(--bg-2) 55%,var(--bg) 100%);
     border-bottom:1px solid var(--line);
 }
 
@@ -25,8 +25,8 @@ header::before{
     height:130%;
     background:
         linear-gradient(115deg, transparent 0 46%, var(--f1-red) 46% 50%, transparent 50% 100%),
-        linear-gradient(115deg, transparent 0 58%, rgba(255,255,255,.08) 58% 60%, transparent 60% 100%),
-        linear-gradient(115deg, transparent 0 66%, rgba(255,255,255,.05) 66% 67.4%, transparent 67.4% 100%);
+        linear-gradient(115deg, transparent 0 58%, var(--stripe) 58% 60%, transparent 60% 100%),
+        linear-gradient(115deg, transparent 0 66%, var(--stripe) 66% 67.4%, transparent 67.4% 100%);
     pointer-events:none;
 }
 
@@ -44,7 +44,7 @@ header::before{
     font-size:.78rem;
     letter-spacing:.18em;
     text-transform:uppercase;
-    color:var(--f1-grey);
+    color:var(--muted);
     margin-bottom:1.4rem;
 }
 
@@ -77,7 +77,7 @@ header h1 .accent{
 
 header p{
     font-size:1.08rem;
-    color:var(--f1-grey);
+    color:var(--muted);
     max-width:46ch;
     margin-bottom:2rem;
 }
@@ -91,7 +91,7 @@ header p{
     align-items:center;
     gap:14px;
     flex-wrap:wrap;
-    color:var(--f1-white);
+    color:var(--text);
     font-weight:600;
     font-size:.85rem;
     text-transform:uppercase;
@@ -116,13 +116,13 @@ nav{
     gap:2.2rem;
     flex-wrap:wrap;
     padding:1rem 1.5rem;
-    background:rgba(11,11,15,.92);
+    background:var(--nav-bg);
     backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
 }
 
 nav a{
-    color:var(--f1-white);
+    color:var(--text);
     text-decoration:none;
     font-weight:600;
     font-size:.82rem;
@@ -148,6 +148,12 @@ nav a::after{
 }
 
 nav a:hover::after{ width:100%; }
+
+nav .theme-toggle{
+    margin-left:.5rem;
+    padding:6px 12px;
+    font-size:.7rem;
+}
 
 /* =====================================
    SECTIONS
@@ -194,7 +200,7 @@ nav a:hover::after{ width:100%; }
 
 .stat-block p{
     margin-top:.5rem;
-    color:var(--f1-grey);
+    color:var(--muted);
     font-size:.78rem;
     text-transform:uppercase;
     letter-spacing:.1em;
@@ -206,7 +212,7 @@ nav a:hover::after{ width:100%; }
 ===================================== */
 
 .hero-card{
-    background:linear-gradient(160deg,var(--f1-panel),#101017);
+    background:linear-gradient(160deg,var(--panel),var(--panel-2));
     border:1px solid var(--line);
     border-radius:8px;
     padding:3rem;
@@ -228,7 +234,7 @@ nav a:hover::after{ width:100%; }
 }
 
 .hero-card p{
-    color:var(--f1-grey);
+    color:var(--muted);
     line-height:1.8;
     margin:1rem 0 2rem;
     max-width:60ch;
@@ -245,7 +251,7 @@ nav a:hover::after{ width:100%; }
 ===================================== */
 
 .about-card{
-    background:var(--f1-panel);
+    background:var(--panel);
     padding:2.2rem;
     border-radius:8px;
     border:1px solid var(--line);
@@ -253,7 +259,7 @@ nav a:hover::after{ width:100%; }
 }
 
 .about-card p{
-    color:var(--f1-grey);
+    color:var(--muted);
     margin-bottom:1rem;
 }
 
@@ -263,12 +269,14 @@ nav a:hover::after{ width:100%; }
    FOOTER
 ===================================== */
 
+footer p + p{ margin-top:.4rem; }
+
 footer{
-    background:var(--f1-panel);
+    background:var(--panel);
     text-align:center;
     padding:2.2rem;
     border-top:3px solid var(--f1-red);
-    color:var(--f1-grey);
+    color:var(--muted);
     font-size:.85rem;
 }
 

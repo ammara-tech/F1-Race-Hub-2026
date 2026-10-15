@@ -1,0 +1,65 @@
+/* =====================================
+   LIVE DATA STATUS BAR
+===================================== */
+
+.live-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:1.6rem;
+}
+
+.live-status{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 16px;
+    border-radius:6px;
+    border:1px solid var(--line);
+    background:var(--panel);
+    font-weight:600;
+    font-size:.9rem;
+    color:var(--muted);
+}
+
+.live-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--muted-2);
+    flex-shrink:0;
+}
+
+.live-status[data-status="live"],
+.live-status[data-status="cached"]{
+    color:var(--ok);
+    border-color:color-mix(in srgb, var(--ok) 40%, transparent);
+}
+
+.live-status[data-status="live"] .live-dot,
+.live-status[data-status="cached"] .live-dot{
+    background:var(--ok);
+    box-shadow:0 0 0 4px color-mix(in srgb, var(--ok) 25%, transparent);
+    animation:pulse 2s ease-in-out infinite;
+}
+
+.live-status[data-status="stale"],
+.live-status[data-status="offline"]{ color:var(--gold); }
+
+.live-status[data-status="stale"] .live-dot,
+.live-status[data-status="offline"] .live-dot{ background:var(--gold); }
+
+.live-status[data-status="loading"] .live-dot{
+    background:var(--f1-red);
+    animation:pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    50%{ opacity:.35; }
+}
+
+@media (prefers-reduced-motion:reduce){
+    .live-dot{ animation:none !important; }
+}

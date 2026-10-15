@@ -10,7 +10,11 @@ export const state = {
   teams: [],
   races: [],
   circuits: [],
-  teamColors: {}
+  teamColors: {},
+
+  // filled by js/api/live.js when the Jolpica API answers
+  constructorStandings: [], // [{ team, points, position, wins }]
+  live: { status: "offline", fetchedAt: null }
 };
 
 export function setData(data) {
@@ -27,4 +31,21 @@ export function setData(data) {
 
 export function teamColor(teamName) {
   return state.teamColors[teamName] || DEFAULT_COLOR;
+}
+
+export function findDriver(name) {
+  return state.drivers.find(d => d.name === name) || null;
+}
+
+// Drivers ordered by championship position (live) or 2026 points (offline).
+export function driversByPoints() {
+  return [...state.drivers].sort((a, b) =>
+    (a.position ?? 99) - (b.position ?? 99) ||
+    (b.points2026 ?? 0) - (a.points2026 ?? 0)
+  );
+}
+
+// Races that already have results, newest first.
+export function completedRacesWithResults() {
+  return state.races.filter(r => r.results?.length).sort((a, b) => b.date.localeCompare(a.date));
 }

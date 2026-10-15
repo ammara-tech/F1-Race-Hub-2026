@@ -6,3 +6,28 @@
     border-left:5px solid var(--f1-red);
     box-shadow:0 0 0 1px rgba(225,6,0,.25), var(--shadow-dark);
 }
+
+/* side-by-side layout: photo left, details right */
+#featuredDriverCard .driver-card{
+    flex-direction:row;
+    min-height:280px;
+}
+
+#featuredDriverCard .driver-photo{
+    flex:0 0 min(320px, 40%);
+    aspect-ratio:auto;
+}
+
+#featuredDriverCard .driver-body{
+    justify-content:center;
+    padding:2rem;
+}
+
+#featuredDriverCard h3{ font-size:1.6rem; }
+#featuredDriverCard .desc{ font-size:1rem; max-width:60ch; }
+
+@media(max-width:600px){
+    #featuredDriverCard .driver-card{ flex-direction:column; }
+    #featuredDriverCard .driver-photo{ flex-basis:auto; aspect-ratio:4 / 3; }
+    #featuredDriverCard .driver-body{ padding:1.3rem; }
+}

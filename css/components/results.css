@@ -1,0 +1,111 @@
+/* =====================================
+   LAST RACE RESULT — podium
+===================================== */
+
+.result-card h3 .muted{ font-size:.9rem; text-transform:none; }
+
+.podium{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    align-items:end;
+    gap:14px;
+    margin-top:1.6rem;
+}
+
+.podium-step{
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    border-top:4px solid var(--team);
+    border-radius:6px;
+    padding:1rem;
+    text-align:center;
+}
+
+.podium-step--1{
+    border-color:var(--f1-red);
+    border-top-color:var(--team);
+    padding-bottom:2.2rem;
+}
+
+.podium-step--2{ padding-bottom:1.3rem; }
+
+.podium-photo{
+    width:clamp(70px,12vw,120px);
+    aspect-ratio:1;
+    margin:0 auto .8rem;
+    border-radius:50%;
+    overflow:hidden;
+    border:3px solid var(--team);
+}
+
+.podium-step--1 .podium-photo{ width:clamp(86px,15vw,150px); }
+
+.podium-photo .photo-ph span{ font-size:1.6rem; }
+
+.podium-pos{
+    font-weight:900;
+    font-style:italic;
+    font-size:1.6rem;
+    line-height:1;
+    color:var(--muted);
+}
+
+.podium-step--1 .podium-pos{ color:var(--gold); font-size:2rem; }
+.podium-step--2 .podium-pos{ color:var(--silver); }
+.podium-step--3 .podium-pos{ color:var(--bronze); }
+
+.podium-name{
+    font-weight:800;
+    font-size:1.05rem;
+    margin-top:.3rem;
+}
+
+.podium-team{
+    color:var(--muted);
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+}
+
+.podium-time{
+    margin-top:.4rem;
+    font-size:.8rem;
+    color:var(--muted);
+}
+
+.result-more{ margin-top:1.4rem; }
+
+.result-more summary{
+    cursor:pointer;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    color:var(--f1-red);
+}
+
+.result-list{
+    margin-top:.8rem;
+    padding-left:1.6rem;
+}
+
+.result-list li{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    gap:12px;
+    padding:.35rem 0;
+    border-bottom:1px solid var(--line);
+}
+
+.result-name{ font-weight:700; }
+.result-team{ font-size:.85rem; }
+.result-pts{ color:var(--muted); font-weight:700; min-width:3ch; text-align:right; }
+
+@media(max-width:600px){
+    .podium{ gap:8px; }
+    .podium-step{ padding:.6rem; }
+    .podium-name{ font-size:.85rem; }
+    .podium-team{ font-size:.65rem; }
+    .result-list li{ grid-template-columns:1fr auto; }
+    .result-team{ display:none; }
+}
