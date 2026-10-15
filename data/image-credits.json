@@ -608,22 +608,6 @@
     }
   },
   "logos": {
-    "red-bull-racing": {
-      "src": "images/logos/red-bull-racing.png",
-      "label": "Red Bull Racing",
-      "title": "Red Bull Racing - 2005 Logo.png",
-      "artist": "Unknown authorUnknown author",
-      "license": "Public domain",
-      "page": "https://commons.wikimedia.org/wiki/File:Red_Bull_Racing_-_2005_Logo.png"
-    },
-    "ferrari": {
-      "src": "images/logos/ferrari.png",
-      "label": "Ferrari",
-      "title": "De-Tomaso-Logo-1959-2004.png",
-      "artist": "Gglemos",
-      "license": "CC0",
-      "page": "https://commons.wikimedia.org/wiki/File:De-Tomaso-Logo-1959-2004.png"
-    },
     "mclaren": {
       "src": "images/logos/mclaren.svg",
       "label": "McLaren",
@@ -639,14 +623,6 @@
       "artist": "Mercedes-AMG Petronas F1 Team",
       "license": "Public domain",
       "page": "https://commons.wikimedia.org/wiki/File:Mercedes-AMG_Petronas_F1_Team_logo_(2026).svg"
-    },
-    "aston-martin": {
-      "src": "images/logos/aston-martin.svg",
-      "label": "Aston Martin",
-      "title": "BWT Racing Point Logo.svg",
-      "artist": "Racing Point UK Limited",
-      "license": "Public domain",
-      "page": "https://commons.wikimedia.org/wiki/File:BWT_Racing_Point_Logo.svg"
     },
     "alpine": {
       "src": "images/logos/alpine.svg",
@@ -671,14 +647,6 @@
       "artist": "Haas F1 Team",
       "license": "Public domain",
       "page": "https://commons.wikimedia.org/wiki/File:Haas_F1_Team_logo_2019.svg"
-    },
-    "racing-bulls": {
-      "src": "images/logos/racing-bulls.png",
-      "label": "Racing Bulls",
-      "title": "Red Bull Racing - 2005 Logo.png",
-      "artist": "Unknown authorUnknown author",
-      "license": "Public domain",
-      "page": "https://commons.wikimedia.org/wiki/File:Red_Bull_Racing_-_2005_Logo.png"
     },
     "audi": {
       "src": "images/logos/audi.svg",

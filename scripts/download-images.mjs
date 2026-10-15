@@ -91,7 +91,7 @@ async function fromWikipedia(title, logo = false) {
   return name ? commonsFile(name, logo) : null;
 }
 
-async function fromSearch(query, logo = false) {
+async function fromSearch(query, logo = false, match = null) {
   const filters = logo ? ["filetype:drawing", "filetype:bitmap"] : ["filetype:bitmap"];
 
   for (const filter of filters) {
@@ -103,7 +103,8 @@ async function fromSearch(query, logo = false) {
     const pages = (data.query?.pages || []).sort((a, b) => a.index - b.index);
     for (const page of pages) {
       const c = toCandidate(page, logo);
-      if (c) return c;
+      // optional "match": the file name must contain this (regex, case-insensitive)
+      if (c && (!match || new RegExp(match, "i").test(c.file))) return c;
     }
   }
   return null;
@@ -115,7 +116,7 @@ async function resolve(item, logo = false) {
     try {
       const c = src.file ? await commonsFile(src.file, logo)
         : src.wiki ? await fromWikipedia(src.wiki, logo)
-        : src.search ? await fromSearch(src.search, logo)
+        : src.search ? await fromSearch(src.search, logo, item.match)
         : null;
       if (c) return { ...c, via: JSON.stringify(src) };
     } catch (err) {

@@ -27,15 +27,15 @@
   ],
 
   "logos": [
-    { "slug": "red-bull-racing", "label": "Red Bull Racing", "sources": [{"search": "Red Bull Racing logo"}, {"search": "Oracle Red Bull Racing logo"}] },
-    { "slug": "ferrari", "label": "Ferrari", "sources": [{"search": "Scuderia Ferrari logo"}, {"search": "Ferrari logo"}] },
+    { "slug": "red-bull-racing", "label": "Red Bull Racing", "match": "red.?bull", "sources": [{"search": "Oracle Red Bull Racing logo"}, {"search": "Red Bull Racing logo 2024"}, {"search": "Red Bull Racing logo"}] },
+    { "slug": "ferrari", "label": "Ferrari", "match": "ferrari", "sources": [{"search": "Scuderia Ferrari logo"}, {"search": "Scuderia Ferrari HP logo"}, {"search": "Ferrari F1 logo"}] },
     { "slug": "mclaren", "label": "McLaren", "sources": [{"search": "McLaren Racing logo"}, {"search": "McLaren logo"}] },
     { "slug": "mercedes", "label": "Mercedes", "sources": [{"search": "Mercedes-AMG Petronas F1 Team logo"}, {"search": "Mercedes-Benz logo"}] },
-    { "slug": "aston-martin", "label": "Aston Martin", "sources": [{"search": "Aston Martin F1 Team logo"}, {"search": "Aston Martin logo"}] },
+    { "slug": "aston-martin", "label": "Aston Martin", "match": "aston.?martin", "sources": [{"search": "Aston Martin Aramco F1 Team logo"}, {"search": "Aston Martin F1 logo"}, {"search": "Aston Martin Lagonda logo"}] },
     { "slug": "alpine", "label": "Alpine", "sources": [{"search": "Alpine F1 Team logo"}, {"search": "Alpine cars logo"}] },
     { "slug": "williams", "label": "Williams", "sources": [{"search": "Williams Racing logo"}, {"search": "Williams Grand Prix Engineering logo"}] },
     { "slug": "haas", "label": "Haas", "sources": [{"search": "Haas F1 Team logo"}, {"search": "Haas Automation logo"}] },
-    { "slug": "racing-bulls", "label": "Racing Bulls", "sources": [{"search": "Racing Bulls logo"}, {"search": "Visa Cash App Racing Bulls logo"}] },
+    { "slug": "racing-bulls", "label": "Racing Bulls", "match": "racing.?bulls|visa.?cash|vcarb|scuderia.?alphatauri|\\bRB\\b", "sources": [{"search": "Racing Bulls logo"}, {"search": "Visa Cash App Racing Bulls logo"}, {"search": "Visa Cash App RB F1 Team logo"}] },
     { "slug": "audi", "label": "Audi", "sources": [{"search": "Audi F1 Team logo"}, {"search": "Audi logo 2016"}] },
     { "slug": "cadillac-f1", "label": "Cadillac F1", "sources": [{"file": "Cadillac Formula 1 Team logo.png"}, {"search": "Cadillac Formula 1 Team logo"}] }
   ],
