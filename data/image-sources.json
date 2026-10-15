@@ -1,5 +1,5 @@
 {
-  "_readme": "Where scripts/download-images.mjs looks for each picture. Sources are tried in order: {wiki} = lead photo of that English Wikipedia article, {search} = Wikimedia Commons search, {file} = an exact Commons file name (use this to force a specific picture). Only freely licensed Commons photos are downloaded. Re-run with --force to replace existing images.",
+  "_readme": "Where scripts/download-images.mjs looks for each picture. Sources are tried in order: {wiki} = lead photo of that English Wikipedia article (logos group: SVG logos allowed), {search} = Wikimedia Commons search, {file} = an exact Commons file name (use this to force a specific picture). Only freely licensed Commons photos are downloaded. Re-run with --force to replace existing images.",
 
   "drivers": [
     { "slug": "max-verstappen", "label": "Max Verstappen", "sources": [{"wiki": "Max Verstappen"}] },
@@ -26,18 +26,18 @@
     { "slug": "valtteri-bottas", "label": "Valtteri Bottas", "sources": [{"wiki": "Valtteri Bottas"}] }
   ],
 
-  "teams": [
-    { "slug": "red-bull-racing", "label": "Red Bull Racing", "sources": [{"search": "2026 Chinese GP Red Bull Isack Hadjar"}, {"search": "2026 Red Bull Racing pit stop"}] },
-    { "slug": "ferrari", "label": "Ferrari", "sources": [{"search": "Scuderia Ferrari pit stop Formula 1"}, {"wiki": "Scuderia Ferrari"}] },
-    { "slug": "mclaren", "label": "McLaren", "sources": [{"search": "2026 Chinese GP McLaren Oscar Piastri"}, {"search": "2025 McLaren pit stop Formula 1"}] },
-    { "slug": "mercedes", "label": "Mercedes", "sources": [{"search": "2026 Chinese GP Mercedes Kimi Antonelli"}, {"search": "2026 Chinese GP Mercedes George Russell"}] },
-    { "slug": "aston-martin", "label": "Aston Martin", "sources": [{"search": "2026 Chinese GP Aston Martin Fernando Alonso"}, {"search": "2026 Chinese GP Aston Martin Lance Stroll"}] },
-    { "slug": "alpine", "label": "Alpine", "sources": [{"search": "Alpine F1 Team pit"}, {"wiki": "Alpine F1 Team"}] },
-    { "slug": "williams", "label": "Williams", "sources": [{"search": "Williams Racing pit stop"}, {"wiki": "Williams Racing"}] },
-    { "slug": "haas", "label": "Haas", "sources": [{"search": "Haas F1 Team pit"}, {"wiki": "Haas F1 Team"}] },
-    { "slug": "racing-bulls", "label": "Racing Bulls", "sources": [{"search": "2026 Chinese GP Racing Bulls Arvid Lindblad"}, {"search": "2026 Chinese GP Racing Bulls"}] },
-    { "slug": "audi", "label": "Audi", "sources": [{"search": "Audi F1 team 2026"}, {"search": "Sauber Formula One team pit"}] },
-    { "slug": "cadillac-f1", "label": "Cadillac F1", "sources": [{"search": "2026 Chinese GP Cadillac Sergio Perez"}, {"search": "2026 Chinese GP Cadillac Valtteri Bottas"}] }
+  "logos": [
+    { "slug": "red-bull-racing", "label": "Red Bull Racing", "sources": [{"search": "Red Bull Racing logo"}, {"search": "Oracle Red Bull Racing logo"}] },
+    { "slug": "ferrari", "label": "Ferrari", "sources": [{"search": "Scuderia Ferrari logo"}, {"search": "Ferrari logo"}] },
+    { "slug": "mclaren", "label": "McLaren", "sources": [{"search": "McLaren Racing logo"}, {"search": "McLaren logo"}] },
+    { "slug": "mercedes", "label": "Mercedes", "sources": [{"search": "Mercedes-AMG Petronas F1 Team logo"}, {"search": "Mercedes-Benz logo"}] },
+    { "slug": "aston-martin", "label": "Aston Martin", "sources": [{"search": "Aston Martin F1 Team logo"}, {"search": "Aston Martin logo"}] },
+    { "slug": "alpine", "label": "Alpine", "sources": [{"search": "Alpine F1 Team logo"}, {"search": "Alpine cars logo"}] },
+    { "slug": "williams", "label": "Williams", "sources": [{"search": "Williams Racing logo"}, {"search": "Williams Grand Prix Engineering logo"}] },
+    { "slug": "haas", "label": "Haas", "sources": [{"search": "Haas F1 Team logo"}, {"search": "Haas Automation logo"}] },
+    { "slug": "racing-bulls", "label": "Racing Bulls", "sources": [{"search": "Racing Bulls logo"}, {"search": "Visa Cash App Racing Bulls logo"}] },
+    { "slug": "audi", "label": "Audi", "sources": [{"search": "Audi F1 Team logo"}, {"search": "Audi logo 2016"}] },
+    { "slug": "cadillac-f1", "label": "Cadillac F1", "sources": [{"file": "Cadillac Formula 1 Team logo.png"}, {"search": "Cadillac Formula 1 Team logo"}] }
   ],
 
   "cars": [

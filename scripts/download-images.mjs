@@ -24,6 +24,11 @@ const THUMB_WIDTH = 960;
 const MIN_WIDTH = 400;
 const OK_MIME = new Set(["image/jpeg", "image/png", "image/webp"]);
 
+// Groups that hold logos: SVG allowed (downloaded as the original vector),
+// small sizes are fine, and Commons searches look for drawings first.
+const LOGO_GROUPS = new Set(["logos"]);
+const LOGO_MIME = new Set(["image/svg+xml", "image/png", "image/webp"]);
+
 const args = process.argv.slice(2);
 const FORCE = args.includes("--force");
 const ONLY = args.filter(a => !a.startsWith("--"));
@@ -47,7 +52,7 @@ async function api(host, params) {
 const stripHtml = s => String(s ?? "").replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
 
 // Look up a Commons file and decide if it is usable.
-async function commonsFile(fileName) {
+async function commonsFile(fileName, logo = false) {
   const title = fileName.startsWith("File:") ? fileName : `File:${fileName}`;
   const data = await api("commons.wikimedia.org", {
     action: "query", titles: title, prop: "imageinfo",
@@ -55,20 +60,20 @@ async function commonsFile(fileName) {
   });
   const page = data.query?.pages?.[0];
   if (!page || page.missing) return null; // not on Commons → probably a non-free local file
-  return toCandidate(page);
+  return toCandidate(page, logo);
 }
 
-function toCandidate(page) {
+function toCandidate(page, logo = false) {
   const info = page.imageinfo?.[0];
   if (!info) return null;
   const meta = info.extmetadata || {};
   if (meta.NonFree?.value === "true" || meta.NonFree?.value === true) return null;
-  if (!OK_MIME.has(info.mime)) return null;
-  if (info.width < MIN_WIDTH) return null;
+  if (!(logo ? LOGO_MIME : OK_MIME).has(info.mime)) return null;
+  if (!logo && info.width < MIN_WIDTH) return null;
 
   return {
     file: page.title,
-    url: info.thumburl || info.url,
+    url: logo && info.mime === "image/svg+xml" ? info.url : (info.thumburl || info.url),
     page: info.descriptionurl,
     artist: stripHtml(meta.Artist?.value) || "Unknown",
     license: stripHtml(meta.LicenseShortName?.value) || "See source",
@@ -77,37 +82,40 @@ function toCandidate(page) {
   };
 }
 
-async function fromWikipedia(title) {
+async function fromWikipedia(title, logo = false) {
   const data = await api("en.wikipedia.org", {
     action: "query", titles: title, redirects: "1",
     prop: "pageimages", piprop: "name", pilicense: "free"
   });
   const name = data.query?.pages?.[0]?.pageimage;
-  return name ? commonsFile(name) : null;
+  return name ? commonsFile(name, logo) : null;
 }
 
-async function fromSearch(query) {
-  const data = await api("commons.wikimedia.org", {
-    action: "query", generator: "search", gsrsearch: `${query} filetype:bitmap`,
-    gsrnamespace: "6", gsrlimit: "12", prop: "imageinfo",
-    iiprop: "url|size|mime|extmetadata", iiurlwidth: THUMB_WIDTH
-  });
-  const pages = (data.query?.pages || []).sort((a, b) => a.index - b.index);
-  for (const page of pages) {
-    const c = toCandidate(page);
-    // prefer landscape-ish photos for scenery; any shape is fine otherwise
-    if (c) return c;
+async function fromSearch(query, logo = false) {
+  const filters = logo ? ["filetype:drawing", "filetype:bitmap"] : ["filetype:bitmap"];
+
+  for (const filter of filters) {
+    const data = await api("commons.wikimedia.org", {
+      action: "query", generator: "search", gsrsearch: `${query} ${filter}`,
+      gsrnamespace: "6", gsrlimit: "12", prop: "imageinfo",
+      iiprop: "url|size|mime|extmetadata", iiurlwidth: THUMB_WIDTH
+    });
+    const pages = (data.query?.pages || []).sort((a, b) => a.index - b.index);
+    for (const page of pages) {
+      const c = toCandidate(page, logo);
+      if (c) return c;
+    }
   }
   return null;
 }
 
-async function resolve(item) {
-  const sources = [...item.sources, { search: item.label }];
+async function resolve(item, logo = false) {
+  const sources = [...item.sources, { search: logo ? `${item.label} logo` : item.label }];
   for (const src of sources) {
     try {
-      const c = src.file ? await commonsFile(src.file)
-        : src.wiki ? await fromWikipedia(src.wiki)
-        : src.search ? await fromSearch(src.search)
+      const c = src.file ? await commonsFile(src.file, logo)
+        : src.wiki ? await fromWikipedia(src.wiki, logo)
+        : src.search ? await fromSearch(src.search, logo)
         : null;
       if (c) return { ...c, via: JSON.stringify(src) };
     } catch (err) {
@@ -157,7 +165,7 @@ async function main() {
         continue;
       }
 
-      const found = await resolve(item);
+      const found = await resolve(item, LOGO_GROUPS.has(group));
       if (!found) {
         console.log(`   x ${item.slug}: no free image found`);
         missing.push(`${group}/${item.slug}`);
