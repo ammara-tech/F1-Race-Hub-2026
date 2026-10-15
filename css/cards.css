@@ -1,0 +1,132 @@
+/* =====================================
+   GRID / CARDS
+===================================== */
+
+.grid-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
+
+.card{
+    background:linear-gradient(155deg,var(--f1-panel),var(--f1-panel-2));
+    border:1px solid var(--line);
+    border-left:4px solid var(--f1-red);
+    border-radius:6px;
+    padding:1.5rem;
+    transition:transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-dark);
+    border-color:var(--f1-red);
+}
+
+.card h3{
+    color:var(--f1-white);
+    font-size:1.15rem;
+    font-weight:800;
+    margin-bottom:.3rem;
+    text-transform:uppercase;
+    letter-spacing:.01em;
+}
+
+.card p{
+    margin:.35rem 0;
+    color:var(--f1-grey);
+    line-height:1.55;
+    font-size:.92rem;
+}
+
+.card strong{ color:var(--f1-white); }
+
+/* driver card specifics */
+.driver-card{
+    position:relative;
+    padding-top:1.6rem;
+}
+
+.driver-card .car-number{
+    position:absolute;
+    top:1rem;
+    right:1.2rem;
+    font-family:"Titillium Web",sans-serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:2.1rem;
+    color:var(--f1-grey-dim);
+    opacity:.5;
+    line-height:1;
+}
+
+.driver-card .flag{
+    font-size:1.3rem;
+    margin-right:.4rem;
+}
+
+.driver-card .team-tag{
+    display:inline-block;
+    font-size:.68rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    padding:.25rem .6rem;
+    border-radius:3px;
+    color:#0B0B0F;
+    margin:.5rem 0 .8rem;
+}
+
+.driver-card .desc{
+    font-style:italic;
+    color:var(--f1-grey);
+    border-top:1px solid var(--line);
+    padding-top:.7rem;
+    margin-top:.7rem;
+}
+
+.driver-card button{
+    margin-top:1rem;
+    width:100%;
+}
+
+/* team card */
+.team-card{
+    border-left-width:5px;
+}
+
+.team-swatch{
+    width:100%;
+    height:6px;
+    border-radius:3px;
+    margin-bottom:1rem;
+}
+
+/* race card status */
+.race-status{
+    display:inline-block;
+    margin-top:.6rem;
+    font-size:.7rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    padding:.25rem .6rem;
+    border-radius:3px;
+    background:var(--f1-panel-3);
+    color:var(--f1-grey);
+}
+
+.race-card.is-next{
+    border-color:var(--f1-red);
+    box-shadow:0 0 0 1px rgba(225,6,0,.35);
+}
+
+.race-card.is-next .race-status{
+    background:var(--f1-red);
+    color:var(--f1-white);
+}
+
+.race-card.is-done{
+    /* filter, not opacity: the fadeUp animation would override opacity */
+    filter:brightness(.6) saturate(.5);
+}

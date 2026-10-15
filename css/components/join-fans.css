@@ -1,16 +1,16 @@
 /* =====================================
    JOIN THE GRID — standalone widget styles
    Namespaced under .fan-* so it never collides
-   with the rest of style.css.
+   with the rest of the stylesheets.
 ===================================== */
 
 .fan-join-card{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:2rem;
-    background:linear-gradient(155deg,#15151E,#1C1C26);
-    border:1px solid #2C2C38;
-    border-left:4px solid #E10600;
+    background:linear-gradient(155deg,var(--f1-panel),var(--f1-panel-2));
+    border:1px solid var(--line);
+    border-left:4px solid var(--f1-red);
     border-radius:6px;
     padding:2rem;
 }
@@ -32,16 +32,16 @@
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:.08em;
-    color:#9A9AA5;
+    color:var(--f1-grey);
 }
 
 .fan-field input,
 .fan-field select{
     padding:12px 14px;
     border-radius:4px;
-    border:1px solid #2C2C38;
-    background:#1C1C26;
-    color:#FFFFFF;
+    border:1px solid var(--line);
+    background:var(--f1-panel-2);
+    color:var(--f1-white);
     font-family:inherit;
     font-size:.95rem;
     outline:none;
@@ -49,7 +49,7 @@
 
 .fan-field input:focus,
 .fan-field select:focus{
-    border-color:#E10600;
+    border-color:var(--f1-red);
     box-shadow:0 0 0 3px rgba(225,6,0,.18);
 }
 
@@ -69,7 +69,7 @@
 }
 
 .fan-roster{
-    border-left:1px solid #2C2C38;
+    border-left:1px solid var(--line);
     padding-left:2rem;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .fan-empty{
-    color:#6C6C78;
+    color:var(--f1-grey-dim);
     font-size:.88rem;
 }
 
@@ -98,8 +98,8 @@
     display:flex;
     align-items:center;
     gap:10px;
-    background:#1C1C26;
-    border:1px solid #2C2C38;
+    background:var(--f1-panel-2);
+    border:1px solid var(--line);
     border-radius:4px;
     padding:.6rem .8rem;
 }
@@ -112,7 +112,7 @@
 
 .fan-chip-team{
     font-size:.72rem;
-    color:#9A9AA5;
+    color:var(--f1-grey);
     text-transform:uppercase;
     letter-spacing:.04em;
 }
@@ -120,14 +120,14 @@
 .fan-chip-remove{
     background:transparent;
     border:none;
-    color:#6C6C78;
+    color:var(--f1-grey-dim);
     padding:2px 6px;
     font-size:.8rem;
     cursor:pointer;
 }
 
 .fan-chip-remove:hover{
-    color:#E10600;
+    color:var(--f1-red);
     background:transparent;
     transform:none;
     box-shadow:none;
@@ -139,7 +139,7 @@
     }
     .fan-roster{
         border-left:none;
-        border-top:1px solid #2C2C38;
+        border-top:1px solid var(--line);
         padding-left:0;
         padding-top:1.5rem;
     }

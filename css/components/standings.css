@@ -1,0 +1,71 @@
+/* =====================================
+   STANDINGS
+===================================== */
+
+#standingsSection .standings-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.standing-row{
+    display:grid;
+    grid-template-columns:44px 1fr auto 140px;
+    align-items:center;
+    gap:16px;
+    background:var(--f1-panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:.9rem 1.2rem;
+    position:relative;
+    overflow:hidden;
+}
+
+.standing-row.p1{ border-color:var(--f1-red); }
+
+.standing-rank{
+    font-family:"Titillium Web",sans-serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--f1-grey-dim);
+}
+
+.standing-row.p1 .standing-rank{ color:var(--f1-red); }
+
+.standing-name{
+    font-weight:700;
+    font-size:1rem;
+}
+
+.standing-name small{
+    display:block;
+    font-weight:400;
+    color:var(--f1-grey);
+    font-size:.78rem;
+    margin-top:2px;
+}
+
+.standing-pts{
+    font-weight:800;
+    font-size:1.1rem;
+    white-space:nowrap;
+}
+
+.standing-bar-track{
+    height:6px;
+    background:var(--line);
+    border-radius:4px;
+    overflow:hidden;
+}
+
+.standing-bar-fill{
+    height:100%;
+    background:var(--f1-red);
+    border-radius:4px;
+}
+
+@media(max-width:900px){
+    .standing-row{ grid-template-columns:34px 1fr auto; }
+    .standing-row .standing-bar-track{ display:none; }
+}

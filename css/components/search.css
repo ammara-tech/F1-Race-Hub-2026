@@ -1,0 +1,22 @@
+/* =====================================
+   SEARCH
+===================================== */
+
+#searchInput{
+    width:100%;
+    padding:16px 20px;
+    border-radius:4px;
+    background:var(--f1-panel);
+    color:white;
+    border:1px solid var(--line);
+    outline:none;
+    font-size:1rem;
+    font-family:inherit;
+}
+
+#searchInput::placeholder{ color:var(--f1-grey-dim); }
+
+#searchInput:focus{
+    border-color:var(--f1-red);
+    box-shadow:0 0 0 3px rgba(225,6,0,.18);
+}

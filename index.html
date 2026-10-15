@@ -14,8 +14,18 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="join-fans.css">
+    <!-- Site styles -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/components/search.css">
+    <link rel="stylesheet" href="css/components/compare.css">
+    <link rel="stylesheet" href="css/components/featured.css">
+    <link rel="stylesheet" href="css/components/standings.css">
+    <link rel="stylesheet" href="css/components/favourites.css">
+    <link rel="stylesheet" href="css/components/countdown.css">
+    <link rel="stylesheet" href="css/components/map.css">
+    <link rel="stylesheet" href="css/components/join-fans.css">
 </head>
 <body>
 
@@ -23,7 +33,7 @@
 HEADER
 ========================== -->
 
-<header>
+<header id="home">
     <div class="header-overlay">
         <div class="header-kicker"><span class="dot"></span> 2026 FIA Formula One World Championship</div>
 
@@ -32,10 +42,9 @@ HEADER
         <p>Every driver, team and circuit of Formula 1's new regulation era — live standings, the full calendar and an interactive world map, in one place.</p>
 
         <div class="hero-actions">
-            <a href="#drivers"><button>Explore Drivers</button></a>
-            <a href="#races"><button class="ghost">View Calendar</button></a>
+            <a class="btn" href="#drivers">Explore Drivers</a>
+            <a class="btn ghost" href="#races">View Calendar</a>
         </div>
-        <br>
         <div class="f1-slogan">
             <span>All To Drive For</span>
             <span>|</span>
@@ -62,22 +71,22 @@ NAVIGATION
 STATS STRIP
 ========================== -->
 
-<section id="home" class="section section-tight">
+<section class="section section-tight">
     <div class="stat-strip">
         <div class="stat-block">
-            <h3>22</h3>
+            <h3 data-stat="drivers">–</h3>
             <p>Drivers</p>
         </div>
         <div class="stat-block">
-            <h3>11</h3>
+            <h3 data-stat="teams">–</h3>
             <p>Teams</p>
         </div>
         <div class="stat-block">
-            <h3>22</h3>
+            <h3 data-stat="races">–</h3>
             <p>Grand Prix Events</p>
         </div>
         <div class="stat-block">
-            <h3>21</h3>
+            <h3 data-stat="countries">–</h3>
             <p>Countries Raced In</p>
         </div>
     </div>
@@ -124,13 +133,14 @@ DRIVER FACE-OFF
         <p class="section-sub">Compare two drivers on career wins and championships.</p>
     </div>
 
-    <div class="compare-box">
-        <input id="driverA" placeholder="Driver 1 (e.g. Verstappen)">
+    <form id="compareForm" class="compare-box">
+        <input id="driverA" list="driverNames" placeholder="Driver 1 (e.g. Verstappen)" aria-label="First driver" autocomplete="off">
         <span class="vs">VS</span>
-        <input id="driverB" placeholder="Driver 2 (e.g. Hamilton)">
-        <button onclick="compareDrivers()">Compare</button>
-        <div id="compareResult"></div>
-    </div>
+        <input id="driverB" list="driverNames" placeholder="Driver 2 (e.g. Hamilton)" aria-label="Second driver" autocomplete="off">
+        <button type="submit">Compare</button>
+        <datalist id="driverNames"></datalist>
+        <div id="compareResult" aria-live="polite"></div>
+    </form>
 </section>
 
 <!-- ==========================
@@ -142,7 +152,7 @@ SEARCH
         <div class="eyebrow">Find a Driver</div>
         <h2 class="section-heading">Search Drivers</h2>
     </div>
-    <input type="text" id="searchInput" placeholder="Search by driver name or team…">
+    <input type="search" id="searchInput" placeholder="Search by driver name, team or nationality…" aria-label="Search drivers">
 </section>
 
 <!-- ==========================
@@ -194,7 +204,7 @@ STANDINGS
     <div class="section-head">
         <div class="eyebrow">Championship</div>
         <h2 class="section-heading">Drivers' Standings</h2>
-        <p class="section-sub">Ranked by a weighted score of career wins and titles — not official FIA points.</p>
+        <p class="section-sub">Unofficial ranking: 2026 points + 3 per career win + 20 per world title. Not the official FIA standings.</p>
     </div>
     <div id="standingsContainer"></div>
 </section>
@@ -269,17 +279,7 @@ JOIN FANS
                 <label for="fanTeam">Favourite Team</label>
                 <select id="fanTeam" name="fanTeam" required>
                     <option value="" disabled selected>Choose a team…</option>
-                    <option>Red Bull Racing</option>
-                    <option>Ferrari</option>
-                    <option>McLaren</option>
-                    <option>Mercedes</option>
-                    <option>Aston Martin</option>
-                    <option>Alpine</option>
-                    <option>Williams</option>
-                    <option>Haas</option>
-                    <option>Racing Bulls</option>
-                    <option>Audi</option>
-                    <option>Cadillac F1</option>
+                    <!-- filled from data/data.json -->
                 </select>
             </div>
 
@@ -327,8 +327,7 @@ FOOTER
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="script.js"></script>
-<script src="join-fans.js"></script>
+<script type="module" src="js/main.js"></script>
 
 </body>
 </html>

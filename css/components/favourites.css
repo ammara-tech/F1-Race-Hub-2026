@@ -1,0 +1,42 @@
+/* =====================================
+   FAVOURITE DRIVER
+===================================== */
+
+#favouriteDriver{
+    background:var(--f1-panel);
+    padding:2rem;
+    border-radius:8px;
+    border-left:5px solid var(--f1-red);
+    font-size:1.05rem;
+    box-shadow:var(--shadow-dark);
+    color:var(--f1-grey);
+}
+
+#favouriteDriver h3{
+    text-transform:uppercase;
+    font-weight:800;
+    color:var(--f1-white);
+    margin-bottom:.5rem;
+}
+
+.fav-card{
+    background:var(--f1-panel-2);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:1rem 1.2rem;
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    transition:border-color var(--ease);
+}
+
+.fav-card:hover{ border-color:var(--f1-red); }
+
+.fav-card h4{ color:var(--f1-white); font-size:1rem; }
+
+.fav-card p{ color:var(--f1-grey); font-size:.85rem; margin:2px 0 0; }
+
+.fav-card button{ padding:8px 14px; font-size:.72rem; }
